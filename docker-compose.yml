@@ -1,23 +1,45 @@
 version: '3'
 services:
-  studygolang:
-    container_name: studygolang
-    build:
-      context: .
-      dockerfile: Dockerfile
+#  studygolang:
+#    container_name: learnue
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - 80:8088
+#    networks:
+#      - learnue_net
+#    links:
+#      - redis:redis
+#      - mysql:mysql
+#    volumes:
+#      - ./static:/app/studygolang/static
+#      - ./template:/app/studygolang/template
+#      - ./log:/app/studygolang/log
+  mysql:
+    image: mysql:5.7
+    container_name: learnue_db
     ports:
-      - 8088:8088
+      - "3306:3306"
     networks:
-      - default
-      - app_net
-    external_links:
-      - redis:redis
-      - mysql:mysql
+      - learnue_net
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MysqlRootPassword}
+      MYSQL_USER: ${MysqlUser}
+      MYSQL_PASSWORD: ${MysqlPassword}
+      MYSQL_DATABASE: ${MysqlDatabase}
     volumes:
-      - ./static:/app/studygolang/static
-      - ./template:/app/studygolang/template
-      - ./log:/app/studygolang/log
+      - ./mysql_data:/var/lib/mysql
+  redis:
+    image: redis:5-alpine
+    container_name: learnue_redis
+    networks:
+      - learnue_net
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "6379:6379"
+    command: redis-server
 
 networks:
-  app_net:
-    external: true
+  learnue_net:
