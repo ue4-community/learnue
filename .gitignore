@@ -51,3 +51,5 @@ welcome.png
 /env.ini
 ssl
 bin
+mysql_data/
+vendor/
