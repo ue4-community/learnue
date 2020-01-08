@@ -1,0 +1,9 @@
+https://dev.learnue.com {
+    tls ./cert.pem ./key.pem
+    gzip
+    proxy / 127.0.0.1:8088
+}
+
+http://dev.learnue.com {
+    redir https://dev.learnue.com{uri}
+}

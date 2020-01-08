@@ -56,7 +56,7 @@
                             <div class="content markdown-body">{{.topic.content}}</div>
                         {{else if .me.Status}}
                             <div style="font-size: 1.2em;">
-                                <p>作者设置付费用户才能查看，加入Go中文网创建的<a href="https://t.zsxq.com/BM72RZR" title="知识星球" target="_blank">知识星球</a>自动成为付费用户（加入后星球私信告知网站用户名）。</p>
+                                <p>作者设置付费用户才能查看，加入UE4中文网创建的<a href="https://t.zsxq.com/BM72RZR" title="知识星球" target="_blank">知识星球</a>自动成为付费用户（加入后星球私信告知网站用户名）。</p>
                                 <img src="{{.static_domain}}/static/img/zsxq.jpg?imageView2/2/w/380" alt="知识星球" class="img-responsive">
                                 <p>或者给我们转账成为付费用户，有效期一年，限时优惠：229元/年，节省 30 元</p>
                                 <img src="{{.static_domain}}/static/img/wxpay229.jpg?imageView2/2/w/380" alt="转账付费" class="img-responsive">
@@ -82,8 +82,8 @@
                 </div>
                 {{end}}
 
-                <!-- 加群等 -->
-                {{include "common/promotion.html" .}}
+                <!-- 加群等 由罗传月武禁用 -->
+{{/*                {{include "common/promotion.html" .}}*/}}
 
                 <div class="content-buttons">
                     <div class="pull-right c9 f11" style="line-height: 12px; padding-top: 3px; text-shadow: 0px 1px 0px #fff;">{{add .topic.view 1}} 次点击 &nbsp;{{if .topic.like}}∙&nbsp; {{.topic.like}} 赞 &nbsp; {{end}}</div>

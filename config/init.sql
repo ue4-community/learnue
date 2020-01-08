@@ -58,11 +58,11 @@ VALUES
 
 INSERT INTO `website_setting` (`name`, `domain`, `title_suffix`, `favicon`, `logo`, `start_year`, `blog_url`, `reading_menu`, `docs_menu`, `slogan`, `beian`, `friends_logo`, `footer_nav`, `project_df_logo`, `index_nav`, `created_at`)
 VALUES
-	('Go语言中文网', 'studygolang.com', '- Go语言中文网 - Golang中文社区', '/static/img/go.ico', '/static/img/logo1.png', 2013, 'http://blog.studygolang.com', '', '', 'Go语言中文网，中国 Golang 社区，致力于构建完善的 Golang 中文社区，Go语言爱好者的学习家园。', '京ICP备14030343号-1', '', '[{\"name\":\"关于\",\"url\":\"/wiki/about\",\"outer_site\":false},{\"name\":\"贡献者\",\"url\":\"/wiki/contributors\",\"outer_site\":false},{\"name\":\"帮助推广\",\"url\":\"/wiki\",\"outer_site\":false},{\"name\":\"反馈\",\"url\":\"/topics/node/16\",\"outer_site\":false},{\"name\":\"Github\",\"url\":\"https://github.com/studygolang\",\"outer_site\":true},{\"name\":\"新浪微博\",\"url\":\"http://weibo.com/studygolang\",\"outer_site\":true},{\"name\":\"内嵌Wide\",\"url\":\"/wide/playground\",\"outer_site\":false},{\"name\":\"免责声明\",\"url\":\"/wiki/duty\",\"outer_site\":false}]', '', '[{"tab":"all","name":"全部","data_source":"feed"}]', '2017-05-21 10:22:00');
+	('UE4中文网', 'learnue.com', '- UE4中文网 - 虚幻引擎中文社区', '/static/img/go.ico', '/static/img/logo1.png', 2013, 'https://www.unrealengine.com/zh-CN/feed', '', '', 'UE4中文网，中国虚幻引擎社区，致力于构建完善的UE4中文社区，UE4爱好者的学习家园。', '京ICP备20000454号', '', '[{\"name\":\"关于\",\"url\":\"/wiki/about\",\"outer_site\":false},{\"name\":\"贡献者\",\"url\":\"/wiki/contributors\",\"outer_site\":false},{\"name\":\"帮助推广\",\"url\":\"/wiki\",\"outer_site\":false},{\"name\":\"反馈\",\"url\":\"/topics/node/16\",\"outer_site\":false},{\"name\":\"Github\",\"url\":\"https://github.com/studygolang\",\"outer_site\":true},{\"name\":\"新浪微博\",\"url\":\"http://weibo.com/studygolang\",\"outer_site\":true},{\"name\":\"内嵌Wide\",\"url\":\"/wide/playground\",\"outer_site\":false},{\"name\":\"免责声明\",\"url\":\"/wiki/duty\",\"outer_site\":false}]', '', '[{"tab":"all","name":"全部","data_source":"feed"}]', '2017-05-21 10:22:00');
 
 INSERT INTO `friend_link` (`id`, `name`, `url`, `seq`, `logo`, `created_at`)
 VALUES
-	(1, 'Go语言中文网', 'http://studygolang.com', 0, '', '2017-05-21 14:52:07');
+	(1, '虚幻引擎官网', 'https://www.unrealengine.com/zh-CN/what-is-unreal-engine-4', 0, '', '2017-05-21 14:52:07');
 
 INSERT INTO `user_setting` (`id`, `key`, `value`, `remark`, `created_at`)
 VALUES
