@@ -1,7 +1,9 @@
 https://dev.learnue.com {
     tls ./cert.pem ./key.pem
     gzip
-    proxy / 127.0.0.1:8088
+    proxy / 127.0.0.1:8088 {
+        transparent
+    }
 }
 
 http://dev.learnue.com {
