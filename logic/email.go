@@ -19,8 +19,7 @@ import (
 	"github.com/studygolang/studygolang/global"
 	"github.com/studygolang/studygolang/model"
 	"github.com/studygolang/studygolang/util"
-
-	"github.com/polaris1119/config"
+	"github.com/studygolang/studygolang/config"
 	"github.com/polaris1119/email"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/logger"
@@ -42,13 +41,13 @@ func (e EmailLogic) SendAuthMail(subject, content string, tos []string) error {
 
 // sendMail 发送电子邮件
 func (EmailLogic) sendMail(subject, content string, tos []string, section string) (err error) {
-	emailConfig, _ := config.ConfigFile.GetSection(section)
+	emailConfig := config.ConfigFile.Sub(section)
 
-	fromEmail := emailConfig["from_email"]
-	smtpUsername := emailConfig["smtp_username"]
-	smtpPassword := emailConfig["smtp_password"]
-	smtpHost := emailConfig["smtp_host"]
-	smtpPort := emailConfig["smtp_port"]
+	fromEmail := emailConfig.GetString("from_email")
+	smtpUsername := emailConfig.GetString("smtp_username")
+	smtpPassword := emailConfig.GetString("smtp_password")
+	smtpHost := emailConfig.GetString("smtp_host")
+	smtpPort := emailConfig.GetString("smtp_port")
 
 	mail := email.NewEmail()
 	mail.From = WebsiteSetting.Name + ` <` + fromEmail + `>`
@@ -59,7 +58,7 @@ func (EmailLogic) sendMail(subject, content string, tos []string, section string
 	auth := smtp.PlainAuth("", smtpUsername, smtpPassword, smtpHost)
 	smtpAddr := smtpHost + ":" + smtpPort
 
-	if goutils.MustBool(emailConfig["tls"]) {
+	if emailConfig.GetBool("tls") {
 		tlsConfig := &tls.Config{
 			InsecureSkipVerify: true,
 			ServerName:         smtpHost,
@@ -105,7 +104,7 @@ func (self EmailLogic) SendActivateMail(email, uuid string, isHttps ...bool) {
 }
 
 func (EmailLogic) genActivateSign(email, uuid string, ts int64) string {
-	emailSignSalt := config.ConfigFile.MustValue("security", "activate_sign_salt")
+	emailSignSalt := config.ConfigFile.GetString("security.activate_sign_salt")
 	origStr := fmt.Sprintf("uuid=%semail=%stimestamp=%d%s", uuid, email, ts, emailSignSalt)
 	return goutils.Md5(origStr)
 }
@@ -246,7 +245,7 @@ func (self EmailLogic) EmailNotice() {
 
 // 生成 退订 邮件的 token
 func (EmailLogic) GenUnsubscribeToken(user *model.User) string {
-	return goutils.Md5(user.String() + config.ConfigFile.MustValue("security", "unsubscribe_token_key"))
+	return goutils.Md5(user.String() + config.ConfigFile.GetString("security.unsubscribe_token_key"))
 }
 
 func (EmailLogic) genEmailContent(data map[string]interface{}) (string, error) {

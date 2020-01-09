@@ -9,6 +9,7 @@ package logic
 
 import (
 	"errors"
+	"github.com/studygolang/studygolang/config"
 	"math/rand"
 	"net/http"
 	"regexp"
@@ -20,7 +21,6 @@ import (
 	"github.com/studygolang/studygolang/model"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/polaris1119/config"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/logger"
 )
@@ -35,7 +35,7 @@ var DefaultReddit = newRedditLogic()
 func newRedditLogic() *RedditLogic {
 	return &RedditLogic{
 		domain: "https://www.reddit.com",
-		path:   config.ConfigFile.MustValue("crawl", "reddit_path"),
+		path:   config.ConfigFile.GetString("crawl.reddit_path"),
 	}
 }
 
@@ -89,7 +89,7 @@ func (this *RedditLogic) newDocumentFromResp(url string) (*goquery.Document, err
 	return goquery.NewDocumentFromResponse(resp)
 }
 
-var PresetUids = config.ConfigFile.MustValueArray("crawl", "preset_uids", ",")
+var PresetUids = strings.Split(config.ConfigFile.GetString("crawl.preset_uids"), ",")
 
 var resourceRe = regexp.MustCompile(`\n\n`)
 

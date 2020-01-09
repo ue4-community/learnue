@@ -8,6 +8,7 @@ package logic
 
 import (
 	"errors"
+	"github.com/studygolang/studygolang/config"
 	"math/rand"
 	"net/url"
 	"strconv"
@@ -19,7 +20,6 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/lunny/html2md"
-	"github.com/polaris1119/config"
 	"github.com/polaris1119/logger"
 	"github.com/polaris1119/set"
 	"golang.org/x/net/context"
@@ -340,7 +340,7 @@ const OsChinaDomain = "https://www.oschina.net"
 // ProjectLogoPrefix 开源项目 logo 前缀
 const ProjectLogoPrefix = "plogo"
 
-var PresetUsernames = config.ConfigFile.MustValueArray("crawl", "preset_users", ",")
+var PresetUsernames = strings.Split(config.ConfigFile.GetString("crawl.preset_users"), ",")
 
 // ParseOneProject 处理单个 project
 func (ProjectLogic) ParseOneProject(projectUrl string) error {

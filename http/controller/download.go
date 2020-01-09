@@ -8,6 +8,7 @@ package controller
 
 import (
 	"fmt"
+	"github.com/studygolang/studygolang/config"
 	"net/http"
 	"regexp"
 	"strings"
@@ -18,7 +19,6 @@ import (
 	"github.com/studygolang/studygolang/model"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/polaris1119/config"
 )
 
 const GoStoragePrefix = "https://dl.google.com/go/"
@@ -102,7 +102,7 @@ func (self DownloadController) FetchGoInstallPackage(ctx echo.Context) error {
 	goVersion := filenameReg.FindString(filename)
 	filePath := fmt.Sprintf("go/%s/%s", goVersion, filename)
 
-	dlUrls := strings.Split(config.ConfigFile.MustValue("download", "dl_urls"), ",")
+	dlUrls := strings.Split(config.ConfigFile.GetString("download.dl_urls"), ",")
 	for _, dlUrl := range dlUrls {
 		dlUrl += filePath
 		resp, err = self.headWithTimeout(dlUrl)

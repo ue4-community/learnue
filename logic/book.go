@@ -8,6 +8,7 @@ package logic
 
 import (
 	"encoding/json"
+	"github.com/studygolang/studygolang/config"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -18,7 +19,6 @@ import (
 
 	"github.com/polaris1119/nosql"
 
-	"github.com/polaris1119/config"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/logger"
 	"github.com/polaris1119/times"
@@ -351,7 +351,7 @@ func (this *book) delUserFromRedis(user int) {
 }
 
 func (this *book) isStoreRedis() bool {
-	onlineStore := config.ConfigFile.MustValue("stat", "online_store")
+	onlineStore := config.ConfigFile.GetString("stat.online_store")
 	return strings.ToLower(onlineStore) == "redis"
 }
 
@@ -397,7 +397,7 @@ func getDataFile() string {
 	if dataFile != "" {
 		return dataFile
 	}
-	dataFile = config.ConfigFile.MustValue("global", "data_path")
+	dataFile = config.ConfigFile.GetString("global.data_path")
 	if !filepath.IsAbs(dataFile) {
 		dataFile = config.ROOT + "/" + dataFile
 	}

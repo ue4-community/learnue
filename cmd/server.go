@@ -13,8 +13,7 @@ import (
 	"time"
 
 	"github.com/studygolang/studygolang/logic"
-
-	"github.com/polaris1119/config"
+	"github.com/studygolang/studygolang/config"
 	"github.com/polaris1119/logger"
 	"github.com/robfig/cron"
 )
@@ -78,11 +77,11 @@ func autocrawl(needAll bool, whichSite string) {
 
 	// 定时增量
 	c := cron.New()
-	c.AddFunc(config.ConfigFile.MustValue("crawl", "spec", "0 0 */1 * * ?"), func() {
+	c.AddFunc(config.ConfigFile.GetString("crawl.spec"), func() {
 		// 抓取 reddit
 		go logic.DefaultReddit.Parse("")
 
-		projectUrl := config.ConfigFile.MustValue("crawl", "project_url")
+		projectUrl := config.ConfigFile.GetString("crawl.project_url")
 		if projectUrl != "" {
 			// 抓取 project
 			go logic.DefaultProject.ParseProjectList(projectUrl)

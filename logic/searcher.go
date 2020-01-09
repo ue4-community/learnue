@@ -10,6 +10,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"github.com/studygolang/studygolang/config"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -18,7 +19,6 @@ import (
 	. "github.com/studygolang/studygolang/db"
 	"github.com/studygolang/studygolang/util"
 
-	"github.com/polaris1119/config"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/logger"
 	"github.com/polaris1119/set"
@@ -32,7 +32,7 @@ type SearcherLogic struct {
 	engineUrl string
 }
 
-var DefaultSearcher = SearcherLogic{maxRows: 100, engineUrl: config.ConfigFile.MustValue("search", "engine_url")}
+var DefaultSearcher = SearcherLogic{maxRows: 100, engineUrl: config.ConfigFile.GetString("search.engine_url")}
 
 // 准备索引数据，post 给 solr
 // isAll: 是否全量
@@ -583,7 +583,7 @@ func (this *SolrClient) Post() error {
 
 	logger.Infoln("start post data to solr...")
 
-	resp, err := http.Post(config.ConfigFile.MustValue("search", "engine_url")+"/update?wt=json&commit=true", "application/json", stringBuilder)
+	resp, err := http.Post(config.ConfigFile.GetString("search.engine_url")+"/update?wt=json&commit=true", "application/json", stringBuilder)
 	if err != nil {
 		logger.Errorln("post error:", err)
 		return err

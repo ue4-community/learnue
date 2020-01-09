@@ -8,6 +8,7 @@ package controller
 
 import (
 	"bytes"
+	"github.com/studygolang/studygolang/config"
 	"html/template"
 	"net/http"
 	"net/url"
@@ -19,7 +20,6 @@ import (
 	"github.com/studygolang/studygolang/model"
 
 	"github.com/labstack/echo/v4"
-	"github.com/polaris1119/config"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/logger"
 )
@@ -99,7 +99,7 @@ func (IndexController) WrapUrl(ctx echo.Context) error {
 		return ctx.Redirect(http.StatusSeeOther, tUrl)
 	}
 
-	iframeDeny := config.ConfigFile.MustValue("crawl", "iframe_deny")
+	iframeDeny := config.ConfigFile.GetString("crawl.iframe_deny")
 	// 检测是否禁止了 iframe 加载
 	// 看是否在黑名单中
 	for _, denyHost := range strings.Split(iframeDeny, ",") {

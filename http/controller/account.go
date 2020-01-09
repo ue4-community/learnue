@@ -7,6 +7,7 @@
 package controller
 
 import (
+	"github.com/studygolang/studygolang/config"
 	"html/template"
 	"net/http"
 	"net/url"
@@ -24,7 +25,6 @@ import (
 	"github.com/dchest/captcha"
 	"github.com/gorilla/sessions"
 	echo "github.com/labstack/echo/v4"
-	"github.com/polaris1119/config"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/logger"
 	guuid "github.com/twinj/uuid"
@@ -65,7 +65,7 @@ func (self AccountController) Register(ctx echo.Context) error {
 		"captchaId": captcha.NewLen(util.CaptchaLen),
 	}
 
-	disallowUsers := config.ConfigFile.MustValueArray("account", "disallow_user", ",")
+	disallowUsers := strings.Split(config.ConfigFile.GetString("account.disallow_user") , ",")
 	for _, disallowUser := range disallowUsers {
 		if disallowUser == username {
 			data["error"] = username + " 被禁止使用，请换一个"
@@ -114,7 +114,7 @@ func (self AccountController) Register(ctx echo.Context) error {
 		emailUrl = "http://mail." + email[pos+1:]
 	}
 
-	if config.ConfigFile.MustBool("account", "verify_email", true) {
+	if config.ConfigFile.GetBool("account.verify_email") {
 		data = map[string]interface{}{
 			"success": template.HTML(`
 				<div style="padding:30px 30px 50px 30px;">

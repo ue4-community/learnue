@@ -8,6 +8,7 @@ package logic
 
 import (
 	"fmt"
+	"github.com/studygolang/studygolang/config"
 	"net/http"
 	"strconv"
 	"strings"
@@ -16,7 +17,6 @@ import (
 	. "github.com/studygolang/studygolang/db"
 	"github.com/studygolang/studygolang/model"
 
-	"github.com/polaris1119/config"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/logger"
 )
@@ -84,7 +84,7 @@ func newViews() *views {
 // TODO: 用户登录了，应该用用户标识，而不是IP
 func (this *views) Incr(req *http.Request, objtype, objid int, uids ...int) {
 	ua := req.UserAgent()
-	spiders := config.ConfigFile.MustValueArray("global", "spider", ",")
+	spiders := strings.Split(config.ConfigFile.GetString("global.spider"), ",")
 	for _, spider := range spiders {
 		if strings.Contains(ua, spider) {
 			return

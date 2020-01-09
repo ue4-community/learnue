@@ -15,8 +15,7 @@ import (
 	"github.com/studygolang/studygolang/model"
 
 	"github.com/polaris1119/logger"
-
-	"github.com/polaris1119/config"
+	"github.com/studygolang/studygolang/config"
 	"golang.org/x/net/context"
 	"golang.org/x/oauth2"
 )
@@ -29,8 +28,8 @@ const GiteaAPIBaseUrl = "https://gitea.com/api/v1"
 
 func init() {
 	githubConf = &oauth2.Config{
-		ClientID:     config.ConfigFile.MustValue("github", "client_id"),
-		ClientSecret: config.ConfigFile.MustValue("github", "client_secret"),
+		ClientID:     config.ConfigFile.GetString("github.client_id"),
+		ClientSecret: config.ConfigFile.GetString("github.client_secret"),
 		Scopes:       []string{"user:email"},
 		Endpoint: oauth2.Endpoint{
 			AuthURL:  "https://github.com/login/oauth/authorize",
@@ -39,8 +38,8 @@ func init() {
 	}
 
 	giteaConf = &oauth2.Config{
-		ClientID:     config.ConfigFile.MustValue("gitea", "client_id"),
-		ClientSecret: config.ConfigFile.MustValue("gitea", "client_secret"),
+		ClientID:     config.ConfigFile.GetString("gitea.client_id"),
+		ClientSecret: config.ConfigFile.GetString("gitea.client_secret"),
 		Endpoint: oauth2.Endpoint{
 			AuthURL:  "https://gitea.com/login/oauth/authorize",
 			TokenURL: "https://gitea.com/login/oauth/access_token",

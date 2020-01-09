@@ -21,7 +21,6 @@ require (
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/go-validator/validator v0.0.0-20180514200540-135c24b11c19
 	github.com/golang/groupcache v0.0.0-20190702054246-869f871628b6 // indirect
-	github.com/golang/protobuf v1.3.1 // indirect
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/feeds v1.1.1
 	github.com/gorilla/schema v1.1.0
@@ -48,7 +47,7 @@ require (
 	github.com/qiniu/bytes v0.0.0-20140728010635-4887e7b2bde3 // indirect
 	github.com/qiniu/rpc v0.0.0-20140728010754-30c22466d920 // indirect
 	github.com/robfig/cron v1.2.0
-	github.com/smartystreets/goconvey v0.0.0-20190710185942-9d28bd7c0945 // indirect
+	github.com/spf13/viper v1.6.1
 	github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf // indirect
 	github.com/sundy-li/html2article v0.0.0-20170724020440-d0b6c083441f
 	github.com/tidwall/gjson v1.3.2

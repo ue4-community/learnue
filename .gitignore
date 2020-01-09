@@ -53,3 +53,5 @@ ssl
 bin
 mysql_data/
 vendor/
+.env
+config/env.yml

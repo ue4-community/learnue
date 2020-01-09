@@ -7,15 +7,15 @@
 package logic_test
 
 import (
+	"github.com/studygolang/studygolang/config"
 	"github.com/studygolang/studygolang/logic"
 	"testing"
 
-	"github.com/polaris1119/config"
 	"github.com/polaris1119/logger"
 )
 
 func TestPullPR(t *testing.T) {
-	logger.Init(config.ROOT+"/log", config.ConfigFile.MustValue("global", "log_level", "DEBUG"))
+	logger.Init(config.ROOT+"/log", config.ConfigFile.GetString("global.log_level"))
 
 	err := logic.DefaultGithub.PullPR("studygolang/GCTT", true)
 	if err != nil {
@@ -24,7 +24,7 @@ func TestPullPR(t *testing.T) {
 }
 
 func TestSyncIssues(t *testing.T) {
-	logger.Init(config.ROOT+"/log", config.ConfigFile.MustValue("global", "log_level", "DEBUG"))
+	logger.Init(config.ROOT+"/log", config.ConfigFile.GetString("global.log_level"))
 
 	err := logic.DefaultGithub.SyncIssues("studygolang/GCTT", true)
 	if err != nil {
@@ -33,7 +33,7 @@ func TestSyncIssues(t *testing.T) {
 }
 
 func TestIssueEvent(t *testing.T) {
-	logger.Init(config.ROOT+"/log", config.ConfigFile.MustValue("global", "log_level", "DEBUG"))
+	logger.Init(config.ROOT+"/log", config.ConfigFile.GetString("global.log_level"))
 
 	body := []byte(`{
 		"action": "closed",

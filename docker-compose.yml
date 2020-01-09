@@ -20,7 +20,7 @@ services:
     image: mysql:5.7
     container_name: learnue_db
     ports:
-      - "3306:3306"
+      - "3307:3306"
     networks:
       - learnue_net
     environment:
@@ -38,7 +38,7 @@ services:
     environment:
       - TZ=Asia/Shanghai
     ports:
-      - "6379:6379"
+      - "6380:6379"
     command: redis-server
 
 networks:

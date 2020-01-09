@@ -10,8 +10,9 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"github.com/spf13/viper"
 
-	. "github.com/polaris1119/config"
+	. "github.com/studygolang/studygolang/config"
 
 	_ "github.com/go-sql-driver/mysql"
 	"xorm.io/core"
@@ -23,21 +24,21 @@ var MasterDB *xorm.Engine
 var dns string
 
 func init() {
-	mysqlConfig, err := ConfigFile.GetSection("mysql")
-	if err != nil {
-		fmt.Println("get mysql config error:", err)
+	mysqlConfig := ConfigFile.Sub("mysql")
+	if mysqlConfig == nil {
+		fmt.Println("get mysql config error:")
 		return
 	}
 
 	fillDns(mysqlConfig)
 
 	// 启动时就打开数据库连接
-	if err = initEngine(); err != nil {
+	if err := initEngine(); err != nil {
 		panic(err)
 	}
 
 	// 测试数据库连接是否 OK
-	if err = MasterDB.Ping(); err != nil {
+	if err := MasterDB.Ping(); err != nil {
 		panic(err)
 	}
 }
@@ -49,18 +50,18 @@ var (
 
 // TestDB 测试数据库
 func TestDB() error {
-	mysqlConfig, err := ConfigFile.GetSection("mysql")
-	if err != nil {
-		fmt.Println("get mysql config error:", err)
-		return err
+	mysqlConfig:= ConfigFile.Sub("mysql")
+	if mysqlConfig == nil {
+		fmt.Println("get mysql config error:")
+		return errors.New("get mysql config error")
 	}
 
 	tmpDns := fmt.Sprintf("%s:%s@tcp(%s:%s)/?charset=%s&parseTime=True&loc=Local",
-		mysqlConfig["user"],
-		mysqlConfig["password"],
-		mysqlConfig["host"],
-		mysqlConfig["port"],
-		mysqlConfig["charset"])
+		mysqlConfig.GetString("user"),
+		mysqlConfig.GetString("password"),
+		mysqlConfig.GetString("host"),
+		mysqlConfig.GetString("port"),
+		mysqlConfig.GetString("charset"))
 	egnine, err := xorm.NewEngine("mysql", tmpDns)
 	if err != nil {
 		fmt.Println("new engine error:", err)
@@ -74,10 +75,10 @@ func TestDB() error {
 		return ConnectDBErr
 	}
 
-	_, err = egnine.Exec("use " + mysqlConfig["dbname"])
+	_, err = egnine.Exec("use " + mysqlConfig.GetString("dbname"))
 	if err != nil {
 		fmt.Println("use db error:", err)
-		_, err = egnine.Exec("CREATE DATABASE " + mysqlConfig["dbname"] + " DEFAULT CHARACTER SET " + mysqlConfig["charset"])
+		_, err = egnine.Exec("CREATE DATABASE " + mysqlConfig.GetString("dbname") + " DEFAULT CHARACTER SET " + mysqlConfig.GetString("charset"))
 		if err != nil {
 			fmt.Println("create database error:", err)
 
@@ -92,16 +93,16 @@ func TestDB() error {
 }
 
 func Init() error {
-	mysqlConfig, err := ConfigFile.GetSection("mysql")
-	if err != nil {
-		fmt.Println("get mysql config error:", err)
-		return err
+	mysqlConfig := ConfigFile.Sub("mysql")
+	if mysqlConfig == nil {
+		fmt.Println("get mysql config error")
+		return errors.New("get mysql config error")
 	}
 
 	fillDns(mysqlConfig)
 
 	// 启动时就打开数据库连接
-	if err = initEngine(); err != nil {
+	if err := initEngine(); err != nil {
 		fmt.Println("mysql is not open:", err)
 		return err
 	}
@@ -109,14 +110,14 @@ func Init() error {
 	return nil
 }
 
-func fillDns(mysqlConfig map[string]string) {
+func fillDns(mysqlConfig *viper.Viper) {
 	dns = fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True&loc=Local",
-		mysqlConfig["user"],
-		mysqlConfig["password"],
-		mysqlConfig["host"],
-		mysqlConfig["port"],
-		mysqlConfig["dbname"],
-		mysqlConfig["charset"])
+		mysqlConfig.GetString("user"),
+		mysqlConfig.GetString("password"),
+		mysqlConfig.GetString("host"),
+		mysqlConfig.GetString("port"),
+		mysqlConfig.GetString("dbname"),
+		mysqlConfig.GetString("charset"))
 }
 
 func initEngine() error {
@@ -127,14 +128,14 @@ func initEngine() error {
 		return err
 	}
 
-	maxIdle := ConfigFile.MustInt("mysql", "max_idle", 2)
-	maxConn := ConfigFile.MustInt("mysql", "max_conn", 10)
+	maxIdle := ConfigFile.GetInt("mysql.max_idle")
+	maxConn := ConfigFile.GetInt("mysql.max_conn")
 
 	MasterDB.SetMaxIdleConns(maxIdle)
 	MasterDB.SetMaxOpenConns(maxConn)
 
-	showSQL := ConfigFile.MustBool("xorm", "show_sql", false)
-	logLevel := ConfigFile.MustInt("xorm", "log_level", 1)
+	showSQL := ConfigFile.GetBool("xorm.show_sql")
+	logLevel := ConfigFile.GetInt("xorm.log_level")
 
 	MasterDB.ShowSQL(showSQL)
 	MasterDB.Logger().SetLevel(core.LogLevel(logLevel))

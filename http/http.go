@@ -9,6 +9,7 @@ package http
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/studygolang/studygolang/config"
 	"html/template"
 	"math"
 	"math/rand"
@@ -25,13 +26,12 @@ import (
 
 	"github.com/gorilla/sessions"
 	echo "github.com/labstack/echo/v4"
-	"github.com/polaris1119/config"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/logger"
 	"github.com/polaris1119/times"
 )
 
-var Store = sessions.NewCookieStore([]byte(config.ConfigFile.MustValue("global", "cookie_secret")))
+var Store = sessions.NewCookieStore([]byte(config.ConfigFile.GetString("global.cookie_secret")))
 
 func SetLoginCookie(ctx echo.Context, username string) {
 	Store.Options.HttpOnly = true

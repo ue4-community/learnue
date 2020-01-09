@@ -8,9 +8,9 @@ package main
 
 import (
 	"flag"
+	"github.com/studygolang/studygolang/config"
 	"time"
 
-	"github.com/polaris1119/config"
 	"github.com/polaris1119/logger"
 	"github.com/robfig/cron"
 
@@ -49,7 +49,7 @@ func ServeBackGround() {
 
 	c := cron.New()
 
-	if config.ConfigFile.MustBool("global", "is_master", false) {
+	if config.ConfigFile.GetBool("global.is_master") {
 		// 每天对非活跃用户降频
 		c.AddFunc("@daily", decrUserActiveWeight)
 
@@ -163,7 +163,7 @@ func unsetTop() {
 }
 
 func syncGCTTRepo() {
-	repo := config.ConfigFile.MustValue("gctt", "repo")
+	repo := config.ConfigFile.GetString("gctt.repo")
 	if repo == "" {
 		return
 	}

@@ -26,9 +26,9 @@ import (
 	"github.com/fatih/structs"
 	"github.com/labstack/echo/v4"
 	mw "github.com/labstack/echo/v4/middleware"
-	. "github.com/polaris1119/config"
 	"github.com/polaris1119/keyword"
 	"github.com/polaris1119/logger"
+	. "github.com/studygolang/studygolang/config"
 )
 
 func init() {
@@ -57,7 +57,7 @@ func main() {
 
 	global.App.Init(logic.WebsiteSetting.Domain)
 
-	logger.Init(ROOT+"/log", ConfigFile.MustValue("global", "log_level", "DEBUG"))
+	logger.Init(ROOT+"/log", ConfigFile.GetString("global.log_level"))
 
 	go keyword.Extractor.Init(keyword.DefaultProps, true, ROOT+"/data/programming.txt,"+ROOT+"/data/dictionary.txt")
 
@@ -65,7 +65,7 @@ func main() {
 
 	go ServeBackGround()
 	// go pprof
-	Pprof(ConfigFile.MustValue("global", "pprof", "127.0.0.1:8096"))
+	Pprof(ConfigFile.GetString("global.pprof"))
 
 	e := echo.New()
 
@@ -94,13 +94,13 @@ func main() {
 }
 
 func getAddr() string {
-	host := ConfigFile.MustValue("listen", "host", "")
+	host := ConfigFile.GetString("listen.host")
 	if host == "" {
 		global.App.Host = "localhost"
 	} else {
 		global.App.Host = host
 	}
-	global.App.Port = ConfigFile.MustValue("listen", "port", "8088")
+	global.App.Port = ConfigFile.GetString("listen.port")
 	return host + ":" + global.App.Port
 }
 

@@ -9,6 +9,7 @@ package logic
 import (
 	"errors"
 	"fmt"
+	"github.com/studygolang/studygolang/config"
 	"github.com/studygolang/studygolang/model"
 	"github.com/studygolang/studygolang/util"
 	"math/rand"
@@ -21,7 +22,6 @@ import (
 	"github.com/polaris1119/slices"
 
 	"github.com/go-validator/validator"
-	"github.com/polaris1119/config"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/logger"
 	"golang.org/x/net/context"
@@ -71,7 +71,7 @@ func (self UserLogic) CreateUser(ctx context.Context, form url.Values) (errMsg s
 		return
 	}
 
-	if config.ConfigFile.MustBool("account", "verify_email", true) {
+	if config.ConfigFile.GetBool("account.verify_email") {
 		if !user.IsRoot {
 			// 避免前端伪造，传递 status=1
 			user.Status = model.UserStatusNoAudit

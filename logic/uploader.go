@@ -10,6 +10,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"github.com/studygolang/studygolang/config"
 	"image"
 	_ "image/gif"
 	_ "image/jpeg"
@@ -28,7 +29,6 @@ import (
 	. "github.com/studygolang/studygolang/db"
 	"github.com/studygolang/studygolang/model"
 
-	"github.com/polaris1119/config"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/logger"
 	"github.com/polaris1119/times"
@@ -53,10 +53,10 @@ type UploaderLogic struct {
 var DefaultUploader = &UploaderLogic{}
 
 func (this *UploaderLogic) InitQiniu() {
-	conf.ACCESS_KEY = config.ConfigFile.MustValue("qiniu", "access_key")
-	conf.SECRET_KEY = config.ConfigFile.MustValue("qiniu", "secret_key")
-	conf.UP_HOST = config.ConfigFile.MustValue("qiniu", "up_host", conf.UP_HOST)
-	this.bucketName = config.ConfigFile.MustValue("qiniu", "bucket_name")
+	conf.ACCESS_KEY = config.ConfigFile.GetString("qiniu.access_key")
+	conf.SECRET_KEY = config.ConfigFile.GetString("qiniu.secret_key")
+	conf.UP_HOST = config.ConfigFile.GetString("qiniu.up_host")
+	this.bucketName = config.ConfigFile.GetString("qiniu.bucket_name")
 }
 
 // 生成上传凭证

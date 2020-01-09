@@ -32,8 +32,7 @@ import (
 	"time"
 
 	"github.com/studygolang/studygolang/model"
-
-	"github.com/polaris1119/config"
+	"github.com/studygolang/studygolang/config"
 )
 
 const (
@@ -94,14 +93,18 @@ func init() {
 
 	App.Date = fileInfo.ModTime()
 
-	App.Env = config.ConfigFile.MustValue("global", "env")
+	App.Env = config.ConfigFile.GetString("global.env")
 
-	App.CDNHttp = config.ConfigFile.MustValue("qiniu", "http_domain", DefaultCDNHttp)
-	App.CDNHttps = config.ConfigFile.MustValue("qiniu", "https_domain", DefaultCDNHttps)
+	App.CDNHttp = config.ConfigFile.GetString("qiniu.http_domain")
+	App.CDNHttps = config.ConfigFile.GetString("qiniu.https_domain")
 }
 
 func (this *app) Init(domain string) {
-	this.Domain = config.ConfigFile.MustValue("global", "domain", domain)
+	do := config.ConfigFile.GetString("global.domain")
+	if do == "" {
+		do = domain
+	}
+	this.Domain = do
 }
 
 func (this *app) SetUptime() {
