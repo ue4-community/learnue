@@ -11,8 +11,8 @@ import (
 
 var (
 	ConfigFile *viper.Viper
-
-	ROOT string
+	ConfigPath string
+	ROOT       string
 
 	TemplateDir string
 )
@@ -36,9 +36,11 @@ func init() {
 
 	ROOT = filepath.ToSlash(filepath.Dir(filepath.Dir(binaryPath)))
 
-	configPath := ROOT + mainIniPath
+	ConfigPath = ROOT + mainIniPath
 
-	if !fileExist(configPath) {
+	ConfigFile = viper.New()
+
+	if !fileExist(ConfigPath) {
 		curDir, _ := os.Getwd()
 		pos := strings.LastIndex(curDir, "src")
 		if pos == -1 {
@@ -47,11 +49,17 @@ func init() {
 		} else {
 			ROOT = curDir[:pos]
 
-			configPath = ROOT + mainIniPath
+			ConfigPath = ROOT + mainIniPath
+		}
+	} else {
+		ConfigFile.SetConfigFile(ConfigPath)
+		err = ConfigFile.ReadInConfig()
+		if err != nil {
+			// panic(err)
+			fmt.Println("load config file error:", err)
 		}
 	}
 
-	ConfigFile = viper.New()
 	ConfigFile.SetDefault("global.is_master", false)
 	ConfigFile.SetDefault("global.log_level", "DEBUG")
 	ConfigFile.SetDefault("global.pprof", "127.0.0.1:8096")
@@ -83,15 +91,7 @@ func init() {
 
 	ConfigFile.SetDefault("qiniu.up_host", "https://up-z2.qiniup.com")
 
-	ConfigFile.SetConfigFile(configPath)
-
 	TemplateDir = ROOT + "/template/"
-	err = ConfigFile.ReadInConfig()
-	if err != nil {
-		// panic(err)
-		fmt.Println("load config file error:", err)
-		panic(err)
-	}
 
 	//TODO 在这里统一设置配置默认值
 
