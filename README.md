@@ -1,48 +1,57 @@
-# studygolang
+# LearnUE
 
-[![Build Status](https://travis-ci.org/studygolang/studygolang.svg?branch=master)](https://travis-ci.org/studygolang/studygolang)
+[真学虚幻网 - UE4中文社区](https://learnue.com "真学虚幻网 - UE4中文社区") 源码
 
-[Go语言中文网 - Golang中文社区](https://studygolang.com "Go语言中文网 - Golang中文社区") 源码
+本项目由UE4中国社区经理[大钊](https://www.zhihu.com/people/fjz13)发起,由[罗传月武](https://www.zhihu.com/people/luochuanyuewu)维护。
 
-网站上线时间：2013-03-15 14:38:09
 
-目前在线运行的分支是 Master。欢迎有兴趣的 gopher 们参与进来，一起构建一个完善的 Go 语言中文网，Go 语言爱好者的学习家园，参与方式请参考：https://studygolang.com/topics/4092
+## 关于此仓库的说明
+本仓库最初fork自[StudyGolang](https://github.com/studygolang/studygolang),并在此基础上继续开发LearnUE,由我开发的内容将在learnue分支持续提交。其他分支以及过往提交内容版权归属于原作者。
 
-## 本地搭建一个 Go语言中文网
+在此对StudyGolang的[贡献者们](https://github.com/studygolang/studygolang/graphs/contributors)表示感谢。
 
-要求 Go 1.11+
+同时我会对已有代码根据需求不断改进,目前的开发计划如下(*号表示未完成):
 
-1、下载源码到本地某个目录
+短期目标
+
+    1.适配learnue.com的需求进行代码修改
+    2.开发部署流程优化(使用mkcert以支持本地证书签发，并使用caddy配置本地证书实现https反向代理，并使用docker进行开发环境搭建和部署)
+    3.配置模块采用viper和.yml配置文件替换旧的基于.ini模式的配置,viper是go社区最火的一个配置库
+    4.配置优化
+    5.*去掉无用或者不相关的，以及代码写死的模块
+   
+长期目标
+    1.*路由库由echo改为gin(待定),gin是go社区最火的一个配置库。
+    2.*ui重构,目前界面ui采用传统mvc方式开发,考虑前端引入vue之类的前端库/或者前端完全工程化，实现前后端分离.
+
+## 参与开发LearnUE
+
+要求 Go 1.12+
+
+1、下载源码到本地某个非gopath目录
 
 ```shell
-git clone https://github.com/studygolang/studygolang
+git clone https://github.com/luochuanyuewu/learnue.git
 ```
 
 2、编译
 
-进入 studygolang 项目目录，执行如下命令：
+进入 learnue 项目目录，执行如下命令：
 
 ```shell
-// unix
-make build
+// unix/linux系统
+export GOPROXY=https://goproxy.cn
+go build -o bin/studygolang github.com/studygolang/studygolang/cmd/studygolang
 // windows
-install.bat
+set GOPROXY=https://goproxy.cn
+go build -o bin/studygolang github.com/studygolang/studygolang/cmd/studygolang
 ```
 
-这样便编译好了 studygolang
+这样便编译好了 learnue
 
-3、在 studygolang 源码中的 bin 目录下应该有了 studygolang 可执行文件。
+3、在 learnue 源码中的 bin 目录下应该有了 studygolang 可执行文件。
 
 接下来启动 studygolang。
-
-```shell
-// unix
-make start
-// windows
-start.bat
-```
-
-或者
 
 ```shell
 // unix
@@ -51,7 +60,7 @@ bin/studygolang
 bin\studygolang.exe
 ```
 
-一切顺利的话，studygolang 应该就启动了。
+一切顺利的话，网站应该就启动了。
 
 4、验证
 
@@ -69,5 +78,6 @@ fork + PR。如果有修改 js 和 css，请执行 gulp （需要先安装 gulp�
 
 ## 使用该项目搭建的网站
 
+- [真学虚幻网](https://learnue.com)
 - [Go语言中文网](https://studygolang.com)
 - [Kotlin中国](https://kotlintc.com)
