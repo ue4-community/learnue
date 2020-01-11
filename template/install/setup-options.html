@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	<title>Go语言中文网 安装 &rsaquo; 配置可选项</title>
+	<title>真学虚幻网 安装 &rsaquo; 配置可选项</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="/static/css/install/install.css" type="text/css" />
 </head>
 <body>
-	<h1 id="logo"><img alt="Go语言中文网" src="/static/img/logo1.png" /></h1>
+	<h1 id="logo"><img alt="真学虚幻网" src="/static/img/logo1.png" /></h1>
 	{{if .success}}
 	<p>可选配置成功！</p>
 	<p class="step"><a href="/account/login" class="button button-large">登录</a>&nbsp;</p>
@@ -14,7 +14,7 @@
 	<p>以下配置信息也可以直接修改 <code>config/env.ini</code> 文件。</p>
 	<form method="post" action="/install/options?step=2">
 		{{if .no_email_conf}}
-		<p>如果配置了 SMTP 邮件服务器，Go语言中文网 就可以给用户发送通知邮件。</p>
+		<p>如果配置了 SMTP 邮件服务器，真学虚幻网 就可以给用户发送通知邮件。</p>
 		<table class="form-table">
 			<tr>
 				<th scope="row"><label for="from_email">发件人</label></th>
@@ -44,7 +44,7 @@
 		</table>
 		{{end}}
 		{{if .no_qiniu_conf}}
-		<p>如果配置了 七牛云存储账号，Go语言中文网 会将图片存到七牛上，否则存在本地。如果没有账号可以 <a href="https://portal.qiniu.com/signup?code=3lfz4at7pxfma" target="_blank">免费申请</a></p>
+		<p>如果配置了 七牛云存储账号，真学虚幻网 会将图片存到七牛上，否则存在本地。如果没有账号可以 <a href="https://portal.qiniu.com/signup?code=3lfz4at7pxfma" target="_blank">免费申请</a></p>
 		<table class="form-table">
 			<tr>
 				<th scope="row"><label for="access_key">access_key</label></th>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	<title>Go语言中文网 安装 &rsaquo; 准备配置文件</title>
+	<title>真学虚幻网 安装 &rsaquo; 准备配置文件</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="/static/css/install/install.css" type="text/css" />
 </head>
 <body>
-	<h1 id="logo"><img alt="Go语言中文网" src="/static/img/logo1.png" /></h1>
+	<h1 id="logo"><img alt="真学虚幻网" src="/static/img/logo1.png" /></h1>
 	{{if eq .step 0}}
-	<p>欢迎使用 Go语言中文网！在您开始使用前，Go语言中文网 需要一些数据库的信息。下列信息将会被问到，请做好准备。</p>
+	<p>欢迎使用 真学虚幻网！在您开始使用前，真学虚幻网 需要一些数据库的信息。下列信息将会被问到，请做好准备。</p>
 	<ol>
 		<li>数据库名</li>
 		<li>数据库用户用户名</li>
@@ -30,12 +30,12 @@
 					<label><input type="radio" name="env" value="dev" checked="checked">开发环境</label>
 					<label><input type="radio" name="env" value="pro">生产环境</label>
 				</td>
-				<td>当前运行 Go语言中文网 的环境</td>
+				<td>当前运行 真学虚幻网 的环境</td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="dbname">数据库名</label></th>
 				<td><input name="dbname" id="dbname" type="text" size="25" value="studygolang" /></td>
-				<td>您希望 Go语言中文网 使用哪个数据库运行？</td>
+				<td>您希望 真学虚幻网 使用哪个数据库运行？</td>
 			</tr>
 			<tr>
 				<th scope="row"><label for="uname">用户名</label></th>
@@ -61,7 +61,7 @@
 		<p class="step"><input name="submit" type="submit" value="提交" class="button" /></p>
 	</form>
 	{{else if eq .step 2}}
-	<p>非常好！您已顺利完成安装中的这一步骤，Go语言中文网 已经可以和您的数据库沟通。若您准备好了，现在就&hellip;</p>
+	<p>非常好！您已顺利完成安装中的这一步骤，真学虚幻网 已经可以和您的数据库沟通。若您准备好了，现在就&hellip;</p>
 
 	<p class="step"><a href="/install/do" class="button">进行安装</a></p>
 	{{end}}

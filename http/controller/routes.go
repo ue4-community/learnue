@@ -37,7 +37,7 @@ func RegisterRoutes(g *echo.Group) {
 	new(DownloadController).RegisterRoute(g)
 	new(LinkController).RegisterRoute(g)
 	new(SubjectController).RegisterRoute(g)
-	new(GCTTController).RegisterRoute(g)
+	//new(GCTTController).RegisterRoute(g)
 
 	new(FeedController).RegisterRoute(g)
 
