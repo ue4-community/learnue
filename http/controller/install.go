@@ -269,7 +269,7 @@ func (InstallController) genConfig(ctx echo.Context) error {
 	if err := db.TestDB(); err != nil {
 		return err
 	}
-	if err := setting.Get().SafeWriteConfigAs(setting.ConfigPath); err != nil {
+	if err := setting.Get().SafeWriteConfigAs(setting.GetProjectEnvFilePath()); err != nil {
 		fmt.Println("写入配置失败:" + err.Error())
 	}
 	return nil

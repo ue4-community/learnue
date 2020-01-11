@@ -17,6 +17,7 @@ require (
 	github.com/facebookgo/stats v0.0.0-20151006221625-1b76add642e4 // indirect
 	github.com/facebookgo/subset v0.0.0-20150612182917-8dac2c3c4870 // indirect
 	github.com/fatih/structs v1.1.0
+	github.com/fsnotify/fsnotify v1.4.7
 	github.com/garyburd/redigo v1.6.0
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/go-validator/validator v0.0.0-20180514200540-135c24b11c19
@@ -32,6 +33,7 @@ require (
 	github.com/labstack/echo/v4 v4.1.8
 	github.com/lunny/html2md v0.0.0-20181018071239-7d234de44546
 	github.com/mattn/go-runewidth v0.0.4 // indirect
+	github.com/mitchellh/go-homedir v1.1.0
 	github.com/myesui/uuid v1.0.0 // indirect
 	github.com/olekukonko/tablewriter v0.0.1 // indirect
 	github.com/polaris1119/config v0.0.0-20160609095218-06a751e884f3
@@ -47,6 +49,7 @@ require (
 	github.com/qiniu/bytes v0.0.0-20140728010635-4887e7b2bde3 // indirect
 	github.com/qiniu/rpc v0.0.0-20140728010754-30c22466d920 // indirect
 	github.com/robfig/cron v1.2.0
+	github.com/spf13/cobra v0.0.5
 	github.com/spf13/viper v1.6.1
 	github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf // indirect
 	github.com/sundy-li/html2article v0.0.0-20170724020440-d0b6c083441f

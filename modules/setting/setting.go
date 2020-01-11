@@ -23,9 +23,9 @@ func init() {
 
 	v := viper.New()
 
-	configPath := GetProjectEnvFilePath()
+	envFilePath := GetProjectEnvFilePath()
 
-	if !fileExist(configPath){
+	if !fileExist(envFilePath){
 		fmt.Printf("默认配置不存在,新建配置并设置默认值")
 		v.SetDefault("global.is_master", false)
 		v.SetDefault("global.log_level", "DEBUG")
@@ -57,12 +57,13 @@ func init() {
 		v.SetDefault("feed.like_weight", 60)
 
 		v.SetDefault("qiniu.up_host", "https://up-z2.qiniup.com")
-		if err := v.SafeWriteConfigAs(configPath);err != nil{
+		if err := v.SafeWriteConfigAs(envFilePath);err != nil{
 			panic(fmt.Sprintf("创建默认配置失败!错误:%s",err.Error()))
 		}
+		config = v
 	}
 
-	v.SetConfigFile(configPath)
+	v.SetConfigFile(envFilePath)
 
 	if err := v.ReadInConfig(); err != nil {
 		panic(fmt.Errorf("读取配置文件错误:%s \n", err))
