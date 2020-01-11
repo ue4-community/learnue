@@ -10,7 +10,7 @@ import (
 	. "github.com/studygolang/studygolang/db"
 	"github.com/studygolang/studygolang/model"
 
-	"github.com/polaris1119/nosql"
+	"github.com/studygolang/studygolang/modules/nosql"
 )
 
 type RiskLogic struct{}

@@ -19,7 +19,7 @@ import (
 
 	"github.com/dchest/captcha"
 	echo "github.com/labstack/echo/v4"
-	"github.com/polaris1119/goutils"
+	"github.com/studygolang/studygolang/modules/goutils"
 )
 
 // 在需要评论（喜欢）且要回调的地方注册评论（喜欢）对象

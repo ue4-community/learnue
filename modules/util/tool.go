@@ -14,7 +14,7 @@ import (
 
 	"github.com/studygolang/studygolang/global"
 
-	"github.com/polaris1119/goutils"
+	"github.com/studygolang/studygolang/modules/goutils"
 )
 
 // 获取头像

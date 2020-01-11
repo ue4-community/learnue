@@ -7,11 +7,11 @@
 package controller
 
 import (
+	"github.com/studygolang/studygolang/modules/setting"
 	"net/http"
 	"path"
 
 	"github.com/labstack/echo/v4"
-	"github.com/polaris1119/config"
 
 	"github.com/studygolang/studygolang/modules/util"
 )
@@ -28,7 +28,7 @@ func (self OtherController) RegisterRoute(g *echo.Group) {
 func (OtherController) Any(ctx echo.Context) error {
 	uri := ctx.Request().RequestURI
 	tplFile := uri + ".html"
-	if util.Exist(path.Clean(config.TemplateDir + tplFile)) {
+	if util.Exist(path.Clean(setting.TemplateDir + tplFile)) {
 		return render(ctx, tplFile, nil)
 	}
 

@@ -15,7 +15,7 @@ import (
 
 	"github.com/studygolang/studygolang/model"
 
-	"github.com/polaris1119/goutils"
+	"github.com/studygolang/studygolang/modules/goutils"
 	"golang.org/x/net/context"
 )
 

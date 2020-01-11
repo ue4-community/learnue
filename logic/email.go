@@ -16,9 +16,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/polaris1119/email"
-	"github.com/polaris1119/goutils"
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/email"
+	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/studygolang/studygolang/modules/logger"
 	. "github.com/studygolang/studygolang/db"
 	"github.com/studygolang/studygolang/global"
 	"github.com/studygolang/studygolang/model"

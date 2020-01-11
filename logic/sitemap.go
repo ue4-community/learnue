@@ -7,14 +7,14 @@
 package logic
 
 import (
+	"github.com/studygolang/studygolang/modules/setting"
 	"github.com/studygolang/studygolang/modules/util"
 	"os"
 	"strconv"
 	"text/template"
 	"time"
 
-	"github.com/polaris1119/config"
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/logger"
 
 	. "github.com/studygolang/studygolang/db"
 	"github.com/studygolang/studygolang/model"
@@ -32,10 +32,10 @@ var funcMap = template.FuncMap{
 	},
 }
 
-var sitemapTpl = template.Must(template.New("sitemap.xml").Funcs(funcMap).ParseFiles(config.TemplateDir + "/sitemap.xml"))
-var sitemapIndexTpl = template.Must(template.ParseFiles(config.TemplateDir + "/sitemapindex.xml"))
+var sitemapTpl = template.Must(template.New("sitemap.xml").Funcs(funcMap).ParseFiles(setting.TemplateDir + "/sitemap.xml"))
+var sitemapIndexTpl = template.Must(template.ParseFiles(setting.TemplateDir + "/sitemapindex.xml"))
 
-var sitemapPath = config.ROOT + "/sitemap/"
+var sitemapPath = setting.ROOT + "/sitemap/"
 
 func init() {
 	if !util.Exist(sitemapPath) {

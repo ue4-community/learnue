@@ -11,7 +11,7 @@ import (
 	"net/http"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/polaris1119/goutils"
+	"github.com/studygolang/studygolang/modules/goutils"
 
 	. "github.com/studygolang/studygolang/http"
 	"github.com/studygolang/studygolang/http/middleware"

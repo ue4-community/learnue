@@ -19,9 +19,9 @@ import (
 	. "github.com/studygolang/studygolang/db"
 
 	"github.com/fatih/structs"
-	"github.com/polaris1119/goutils"
-	"github.com/polaris1119/logger"
-	"github.com/polaris1119/set"
+	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/studygolang/studygolang/modules/set"
 	"golang.org/x/net/context"
 	"xorm.io/xorm"
 )

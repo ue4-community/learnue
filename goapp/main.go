@@ -26,8 +26,8 @@ import (
 	"github.com/fatih/structs"
 	"github.com/labstack/echo/v4"
 	mw "github.com/labstack/echo/v4/middleware"
-	"github.com/polaris1119/keyword"
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/keyword"
+	"github.com/studygolang/studygolang/modules/logger"
 )
 
 func init() {

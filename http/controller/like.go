@@ -16,7 +16,7 @@ import (
 	"github.com/studygolang/studygolang/modules/util"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/polaris1119/goutils"
+	"github.com/studygolang/studygolang/modules/goutils"
 )
 
 type LikeController struct{}

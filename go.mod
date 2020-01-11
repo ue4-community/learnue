@@ -21,35 +21,34 @@ require (
 	github.com/garyburd/redigo v1.6.0
 	github.com/go-sql-driver/mysql v1.4.1
 	github.com/go-validator/validator v0.0.0-20180514200540-135c24b11c19
-	github.com/golang/groupcache v0.0.0-20190702054246-869f871628b6 // indirect
+	github.com/golang/groupcache v0.0.0-20190702054246-869f871628b6
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/feeds v1.1.1
 	github.com/gorilla/schema v1.1.0
 	github.com/gorilla/sessions v1.2.0
-	github.com/huichen/sego v0.0.0-20180617034105-3f3c8a8cfacc // indirect
+	github.com/huichen/sego v0.0.0-20180617034105-3f3c8a8cfacc
 	github.com/issue9/assert v1.3.3 // indirect
 	github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43
-	github.com/jmcvetta/randutil v0.0.0-20150817122601-2bb1b664bcff // indirect
+	github.com/jmcvetta/randutil v0.0.0-20150817122601-2bb1b664bcff
 	github.com/labstack/echo/v4 v4.1.8
 	github.com/lunny/html2md v0.0.0-20181018071239-7d234de44546
 	github.com/mattn/go-runewidth v0.0.4 // indirect
-	github.com/mitchellh/go-homedir v1.1.0
 	github.com/myesui/uuid v1.0.0 // indirect
 	github.com/olekukonko/tablewriter v0.0.1 // indirect
-	github.com/polaris1119/config v0.0.0-20160609095218-06a751e884f3
-	github.com/polaris1119/email v0.0.0-20171030115359-9c57dd3e3e7d
-	github.com/polaris1119/goutils v0.0.0-20190815094239-73c47df9b896
-	github.com/polaris1119/keyword v0.0.0-20170608075927-96ae6735f2f2
-	github.com/polaris1119/logger v0.0.0-20170422061149-0233d014769e
-	github.com/polaris1119/nosql v0.0.0-20181019111233-3852ef28d084
-	github.com/polaris1119/set v0.1.1-0.20160423093427-654439414ced
-	github.com/polaris1119/slices v0.0.0-20160517071324-6ecacdb3cd38
-	github.com/polaris1119/times v0.0.0-20160420102536-14f7f3ba487e
+	github.com/polaris1119/config v0.0.0-20160609095218-06a751e884f3 // indirect
+	github.com/polaris1119/email v0.0.0-20171030115359-9c57dd3e3e7d // indirect
+	github.com/polaris1119/goutils v0.0.0-20190815094239-73c47df9b896 // indirect
+	github.com/polaris1119/keyword v0.0.0-20170608075927-96ae6735f2f2 // indirect
+	github.com/polaris1119/logger v0.0.0-20170422061149-0233d014769e // indirect
+	github.com/polaris1119/nosql v0.0.0-20181019111233-3852ef28d084 // indirect
+	github.com/polaris1119/set v0.1.1-0.20160423093427-654439414ced // indirect
+	github.com/polaris1119/slices v0.0.0-20160517071324-6ecacdb3cd38 // indirect
+	github.com/polaris1119/times v0.0.0-20160420102536-14f7f3ba487e // indirect
 	github.com/qiniu/api.v6 v6.0.9+incompatible
 	github.com/qiniu/bytes v0.0.0-20140728010635-4887e7b2bde3 // indirect
 	github.com/qiniu/rpc v0.0.0-20140728010754-30c22466d920 // indirect
 	github.com/robfig/cron v1.2.0
-	github.com/spf13/cobra v0.0.5
+	github.com/spf13/cobra v0.0.5 // indirect
 	github.com/spf13/viper v1.6.1
 	github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf // indirect
 	github.com/sundy-li/html2article v0.0.0-20170724020440-d0b6c083441f

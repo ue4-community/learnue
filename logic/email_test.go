@@ -1,7 +1,7 @@
 package logic_test
 
 import (
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/logger"
 	"github.com/studygolang/studygolang/db"
 
 	"github.com/studygolang/studygolang/logic"

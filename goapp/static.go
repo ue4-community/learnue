@@ -8,8 +8,7 @@ package main
 
 import (
 	echo "github.com/labstack/echo/v4"
-
-	. "github.com/polaris1119/config"
+	"github.com/studygolang/studygolang/modules/setting"
 )
 
 type staticRootConf struct {
@@ -31,9 +30,9 @@ func serveStatic(e *echo.Echo) {
 		filterPrefixs = append(filterPrefixs, prefix)
 
 		if rootConf.isFile {
-			e.File(prefix, ROOT+rootConf.root)
+			e.File(prefix, setting.ROOT+rootConf.root)
 		} else {
-			e.Static(prefix, ROOT+rootConf.root)
+			e.Static(prefix, setting.ROOT+rootConf.root)
 		}
 	}
 }

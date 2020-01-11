@@ -9,7 +9,7 @@ package model
 import (
 	"strings"
 
-	"github.com/polaris1119/keyword"
+	"github.com/studygolang/studygolang/modules/keyword"
 )
 
 // AutoTag 自动生成 tag

@@ -17,13 +17,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/polaris1119/times"
+	"github.com/studygolang/studygolang/modules/times"
 
-	"github.com/polaris1119/slices"
+	"github.com/studygolang/studygolang/modules/slices"
 
 	"github.com/go-validator/validator"
-	"github.com/polaris1119/goutils"
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/studygolang/studygolang/modules/logger"
 	"golang.org/x/net/context"
 	"xorm.io/xorm"
 

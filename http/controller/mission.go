@@ -16,7 +16,7 @@ import (
 	"github.com/studygolang/studygolang/modules/context"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/polaris1119/times"
+	"github.com/studygolang/studygolang/modules/times"
 )
 
 type MissionController struct{}

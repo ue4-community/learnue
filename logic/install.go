@@ -3,9 +3,9 @@ package logic
 import (
 	"bytes"
 	"github.com/studygolang/studygolang/model"
+	"github.com/studygolang/studygolang/modules/setting"
 	"io/ioutil"
 
-	"github.com/polaris1119/config"
 	"golang.org/x/net/context"
 
 	. "github.com/studygolang/studygolang/db"
@@ -18,7 +18,7 @@ var DefaultInstall = InstallLogic{}
 func (InstallLogic) CreateTable(ctx context.Context) error {
 	objLog := GetLogger(ctx)
 
-	dbFile := config.ROOT + "/config/db.sql"
+	dbFile := setting.ROOT + "/config/db.sql"
 	buf, err := ioutil.ReadFile(dbFile)
 
 	if err != nil {
@@ -58,7 +58,7 @@ func (InstallLogic) InitTable(ctx context.Context) error {
 		return nil
 	}
 
-	dbFile := config.ROOT + "/config/init.sql"
+	dbFile := setting.ROOT + "/config/init.sql"
 	buf, err := ioutil.ReadFile(dbFile)
 	if err != nil {
 		objLog.Errorln("init table, read init file error:", err)

@@ -16,9 +16,9 @@ import (
 	"github.com/studygolang/studygolang/model"
 	"github.com/studygolang/studygolang/modules/util"
 
-	"github.com/polaris1119/goutils"
-	"github.com/polaris1119/set"
-	"github.com/polaris1119/slices"
+	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/studygolang/studygolang/modules/set"
+	"github.com/studygolang/studygolang/modules/slices"
 	"golang.org/x/net/context"
 )
 

@@ -17,11 +17,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/polaris1119/nosql"
+	"github.com/studygolang/studygolang/modules/nosql"
 
-	"github.com/polaris1119/goutils"
-	"github.com/polaris1119/logger"
-	"github.com/polaris1119/times"
+	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/studygolang/studygolang/modules/times"
 )
 
 const (

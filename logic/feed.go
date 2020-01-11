@@ -12,13 +12,13 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/logger"
 
 	. "github.com/studygolang/studygolang/db"
 	"github.com/studygolang/studygolang/model"
 	"github.com/studygolang/studygolang/modules/util"
 
-	"github.com/polaris1119/set"
+	"github.com/studygolang/studygolang/modules/set"
 	"xorm.io/xorm"
 )
 

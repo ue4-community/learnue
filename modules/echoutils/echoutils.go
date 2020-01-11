@@ -11,9 +11,9 @@ import (
 	mycontext "github.com/studygolang/studygolang/modules/context"
 
 	"github.com/labstack/echo/v4"
-	"github.com/polaris1119/goutils"
-	"github.com/polaris1119/logger"
-	"github.com/polaris1119/nosql"
+	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/studygolang/studygolang/modules/nosql"
 )
 
 const logKey = "logger"

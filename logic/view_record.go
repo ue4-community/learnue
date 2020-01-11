@@ -11,7 +11,7 @@ import (
 
 	. "github.com/studygolang/studygolang/db"
 
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/logger"
 	"golang.org/x/net/context"
 )
 

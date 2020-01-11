@@ -7,8 +7,8 @@
 package main
 
 import (
-	"github.com/polaris1119/keyword"
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/keyword"
+	"github.com/studygolang/studygolang/modules/logger"
 	"github.com/studygolang/studygolang/modules/setting"
 )
 

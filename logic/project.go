@@ -20,8 +20,8 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/lunny/html2md"
-	"github.com/polaris1119/logger"
-	"github.com/polaris1119/set"
+	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/studygolang/studygolang/modules/set"
 	"golang.org/x/net/context"
 )
 

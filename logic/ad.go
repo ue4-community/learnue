@@ -10,7 +10,7 @@ import (
 	. "github.com/studygolang/studygolang/db"
 	"github.com/studygolang/studygolang/model"
 
-	"github.com/polaris1119/set"
+	"github.com/studygolang/studygolang/modules/set"
 	"golang.org/x/net/context"
 )
 

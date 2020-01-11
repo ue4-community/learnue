@@ -9,7 +9,7 @@ package helper
 import (
 	"sync"
 
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/logger"
 	guuid "github.com/twinj/uuid"
 )
 

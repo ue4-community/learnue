@@ -29,9 +29,9 @@ import (
 	. "github.com/studygolang/studygolang/db"
 	"github.com/studygolang/studygolang/model"
 
-	"github.com/polaris1119/goutils"
-	"github.com/polaris1119/logger"
-	"github.com/polaris1119/times"
+	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/studygolang/studygolang/modules/times"
 	"github.com/qiniu/api.v6/conf"
 	"github.com/qiniu/api.v6/io"
 	"github.com/qiniu/api.v6/rs"

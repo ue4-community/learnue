@@ -14,8 +14,8 @@ import (
 	"github.com/studygolang/studygolang/model"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/polaris1119/goutils"
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/studygolang/studygolang/modules/logger"
 	"golang.org/x/net/context"
 )
 

@@ -11,7 +11,7 @@ import (
 	"github.com/studygolang/studygolang/modules/setting"
 	"time"
 
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/logger"
 	"github.com/robfig/cron"
 
 	"github.com/studygolang/studygolang/db"

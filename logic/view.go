@@ -17,8 +17,8 @@ import (
 	. "github.com/studygolang/studygolang/db"
 	"github.com/studygolang/studygolang/model"
 
-	"github.com/polaris1119/goutils"
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/studygolang/studygolang/modules/logger"
 )
 
 // 话题/文章/资源/图书等的浏览数

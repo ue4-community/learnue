@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/polaris1119/times"
+	"github.com/studygolang/studygolang/modules/times"
 	"golang.org/x/net/context"
 )
 

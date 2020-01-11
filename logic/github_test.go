@@ -11,7 +11,7 @@ import (
 	"github.com/studygolang/studygolang/logic"
 	"testing"
 
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/logger"
 )
 
 func TestPullPR(t *testing.T) {

@@ -16,8 +16,8 @@ import (
 	"github.com/studygolang/studygolang/modules/context"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/polaris1119/goutils"
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/studygolang/studygolang/modules/logger"
 )
 
 // 在需要评论（喜欢）且要回调的地方注册评论（喜欢）对象

@@ -9,7 +9,7 @@ package model
 import (
 	"encoding/json"
 
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/logger"
 )
 
 const (

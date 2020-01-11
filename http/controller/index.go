@@ -20,8 +20,8 @@ import (
 	"github.com/studygolang/studygolang/modules/context"
 
 	"github.com/labstack/echo/v4"
-	"github.com/polaris1119/goutils"
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/studygolang/studygolang/modules/logger"
 )
 
 type IndexController struct{}

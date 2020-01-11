@@ -12,8 +12,8 @@ import (
 	"github.com/studygolang/studygolang/model"
 	"net/url"
 
-	"github.com/polaris1119/goutils"
-	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/studygolang/studygolang/modules/logger"
 )
 
 type TopicNodeLogic struct{}

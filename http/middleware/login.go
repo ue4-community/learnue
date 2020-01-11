@@ -22,7 +22,7 @@ import (
 
 	"github.com/gorilla/context"
 	echo "github.com/labstack/echo/v4"
-	"github.com/polaris1119/goutils"
+	"github.com/studygolang/studygolang/modules/goutils"
 )
 
 // AutoLogin 用于 echo 框架的自动登录和通过 cookie 获取用户信息
