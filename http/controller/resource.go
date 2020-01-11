@@ -10,12 +10,12 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/studygolang/studygolang/context"
 	. "github.com/studygolang/studygolang/http"
 	"github.com/studygolang/studygolang/http/middleware"
 	"github.com/studygolang/studygolang/logic"
 	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/util"
+	"github.com/studygolang/studygolang/modules/context"
+	"github.com/studygolang/studygolang/modules/util"
 
 	"github.com/dchest/captcha"
 	echo "github.com/labstack/echo/v4"

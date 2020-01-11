@@ -10,7 +10,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/studygolang/studygolang/config"
 	"net/url"
 	"regexp"
 	"strconv"
@@ -183,7 +182,7 @@ func (self ArticleLogic) ParseArticle(ctx context.Context, articleUrl string, au
 		return nil, errors.New("content is short")
 	}
 
-	if auto && strings.Count(content, "<a") > config.ConfigFile.GetInt("crawl.contain_link") {
+	if auto && strings.Count(content, "<a") > ConfigFile.GetInt("crawl.contain_link") {
 		logger.Errorln(articleUrl, "content contains too many link!")
 		return nil, errors.New("content contains too many link")
 	}

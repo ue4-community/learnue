@@ -7,7 +7,7 @@
 package logic
 
 import (
-	"github.com/studygolang/studygolang/util"
+	"github.com/studygolang/studygolang/modules/util"
 	"os"
 	"strconv"
 	"text/template"

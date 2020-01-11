@@ -15,14 +15,13 @@ import (
 	"strings"
 	"time"
 
-	. "github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/global"
-	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/util"
-	"github.com/studygolang/studygolang/config"
 	"github.com/polaris1119/email"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/logger"
+	. "github.com/studygolang/studygolang/db"
+	"github.com/studygolang/studygolang/global"
+	"github.com/studygolang/studygolang/model"
+	"github.com/studygolang/studygolang/modules/util"
 )
 
 type EmailLogic struct{}
@@ -41,7 +40,7 @@ func (e EmailLogic) SendAuthMail(subject, content string, tos []string) error {
 
 // sendMail 发送电子邮件
 func (EmailLogic) sendMail(subject, content string, tos []string, section string) (err error) {
-	emailConfig := config.ConfigFile.Sub(section)
+	emailConfig := ConfigFile.Sub(section)
 
 	fromEmail := emailConfig.GetString("from_email")
 	smtpUsername := emailConfig.GetString("smtp_username")
@@ -104,7 +103,7 @@ func (self EmailLogic) SendActivateMail(email, uuid string, isHttps ...bool) {
 }
 
 func (EmailLogic) genActivateSign(email, uuid string, ts int64) string {
-	emailSignSalt := config.ConfigFile.GetString("security.activate_sign_salt")
+	emailSignSalt := ConfigFile.GetString("security.activate_sign_salt")
 	origStr := fmt.Sprintf("uuid=%semail=%stimestamp=%d%s", uuid, email, ts, emailSignSalt)
 	return goutils.Md5(origStr)
 }
@@ -138,7 +137,7 @@ var emailFuncMap = template.FuncMap{
 	"substring": util.Substring,
 }
 
-var emailTpl = template.Must(template.New("email.html").Funcs(emailFuncMap).ParseFiles(config.TemplateDir + "email.html"))
+var emailTpl = template.Must(template.New("email.html").Funcs(emailFuncMap).ParseFiles(TemplateDir + "email.html"))
 
 // 订阅邮件通知
 func (self EmailLogic) EmailNotice() {
@@ -245,7 +244,7 @@ func (self EmailLogic) EmailNotice() {
 
 // 生成 退订 邮件的 token
 func (EmailLogic) GenUnsubscribeToken(user *model.User) string {
-	return goutils.Md5(user.String() + config.ConfigFile.GetString("security.unsubscribe_token_key"))
+	return goutils.Md5(user.String() + ConfigFile.GetString("security.unsubscribe_token_key"))
 }
 
 func (EmailLogic) genEmailContent(data map[string]interface{}) (string, error) {

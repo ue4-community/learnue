@@ -8,16 +8,16 @@ package controller
 
 import (
 	"bytes"
-	"github.com/studygolang/studygolang/config"
+	"github.com/studygolang/studygolang/db"
 	"html/template"
 	"net/http"
 	"net/url"
 	"strings"
 
-	"github.com/studygolang/studygolang/context"
 	. "github.com/studygolang/studygolang/http"
 	"github.com/studygolang/studygolang/logic"
 	"github.com/studygolang/studygolang/model"
+	"github.com/studygolang/studygolang/modules/context"
 
 	"github.com/labstack/echo/v4"
 	"github.com/polaris1119/goutils"
@@ -99,7 +99,7 @@ func (IndexController) WrapUrl(ctx echo.Context) error {
 		return ctx.Redirect(http.StatusSeeOther, tUrl)
 	}
 
-	iframeDeny := config.ConfigFile.GetString("crawl.iframe_deny")
+	iframeDeny := db.ConfigFile.GetString("crawl.iframe_deny")
 	// 检测是否禁止了 iframe 加载
 	// 看是否在黑名单中
 	for _, denyHost := range strings.Split(iframeDeny, ",") {
@@ -128,7 +128,7 @@ func (IndexController) WrapUrl(ctx echo.Context) error {
 // PkgdocHandler Go 语言文档中文版
 func (IndexController) Pkgdoc(ctx echo.Context) error {
 	// return render(ctx, "pkgdoc.html", map[string]interface{}{"activeDoc": "active"})
-	tpl, err := template.ParseFiles(config.TemplateDir + "pkgdoc.html")
+	tpl, err := template.ParseFiles(db.TemplateDir + "pkgdoc.html")
 	if err != nil {
 		logger.Errorln("parse file error:", err)
 		return err

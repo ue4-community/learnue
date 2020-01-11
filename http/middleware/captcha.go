@@ -11,7 +11,7 @@ import (
 
 	"github.com/studygolang/studygolang/logic"
 	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/util"
+	"github.com/studygolang/studygolang/modules/util"
 
 	"github.com/dchest/captcha"
 	echo "github.com/labstack/echo/v4"

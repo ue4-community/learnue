@@ -7,7 +7,6 @@
 package util_test
 
 import (
-	. "github.com/studygolang/studygolang/util"
 	"testing"
 )
 

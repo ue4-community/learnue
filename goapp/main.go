@@ -7,6 +7,7 @@
 package main
 
 import (
+	"github.com/studygolang/studygolang/db"
 	"io/ioutil"
 	"math/rand"
 	"os"
@@ -14,7 +15,6 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/studygolang/studygolang/cmd"
 	"github.com/studygolang/studygolang/global"
 	"github.com/studygolang/studygolang/http/controller"
 	"github.com/studygolang/studygolang/http/controller/admin"
@@ -28,7 +28,6 @@ import (
 	mw "github.com/labstack/echo/v4/middleware"
 	"github.com/polaris1119/keyword"
 	"github.com/polaris1119/logger"
-	. "github.com/studygolang/studygolang/config"
 )
 
 func init() {
@@ -42,10 +41,10 @@ func main() {
 	if len(os.Args) >= 2 {
 		switch os.Args[1] {
 		case "indexer":
-			cmd.Indexer()
+			Indexer()
 			return
 		case "crawler":
-			cmd.Crawler()
+			Crawler()
 			return
 		}
 	}
@@ -57,15 +56,15 @@ func main() {
 
 	global.App.Init(logic.WebsiteSetting.Domain)
 
-	logger.Init(ROOT+"/log", ConfigFile.GetString("global.log_level"))
+	logger.Init(db.ROOT+"/log", db.ConfigFile.GetString("global.log_level"))
 
-	go keyword.Extractor.Init(keyword.DefaultProps, true, ROOT+"/data/programming.txt,"+ROOT+"/data/dictionary.txt")
+	go keyword.Extractor.Init(keyword.DefaultProps, true, db.ROOT+"/data/programming.txt,"+db.ROOT+"/data/dictionary.txt")
 
 	go logic.Book.ClearRedisUser()
 
 	go ServeBackGround()
 	// go pprof
-	Pprof(ConfigFile.GetString("global.pprof"))
+	Pprof(db.ConfigFile.GetString("global.pprof"))
 
 	e := echo.New()
 
@@ -94,18 +93,18 @@ func main() {
 }
 
 func getAddr() string {
-	host := ConfigFile.GetString("listen.host")
+	host := db.ConfigFile.GetString("listen.host")
 	if host == "" {
 		global.App.Host = "localhost"
 	} else {
 		global.App.Host = host
 	}
-	global.App.Port = ConfigFile.GetString("listen.port")
+	global.App.Port = db.ConfigFile.GetString("listen.port")
 	return host + ":" + global.App.Port
 }
 
 func savePid() {
-	pidFilename := ROOT + "/pid/" + filepath.Base(os.Args[0]) + ".pid"
+	pidFilename := db.ROOT + "/pid/" + filepath.Base(os.Args[0]) + ".pid"
 	pid := os.Getpid()
 
 	ioutil.WriteFile(pidFilename, []byte(strconv.Itoa(pid)), 0755)

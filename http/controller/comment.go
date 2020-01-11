@@ -11,16 +11,16 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/studygolang/studygolang/context"
 	. "github.com/studygolang/studygolang/http"
 	"github.com/studygolang/studygolang/http/middleware"
 	"github.com/studygolang/studygolang/logic"
 	"github.com/studygolang/studygolang/model"
+	"github.com/studygolang/studygolang/modules/context"
 
 	echo "github.com/labstack/echo/v4"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/slices"
-	"github.com/studygolang/studygolang/echoutils"
+	"github.com/studygolang/studygolang/modules/echoutils"
 )
 
 // 在需要喜欢且要回调的地方注册喜欢对象

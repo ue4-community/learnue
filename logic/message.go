@@ -8,7 +8,7 @@ package logic
 
 import (
 	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/util"
+	"github.com/studygolang/studygolang/modules/util"
 	"html/template"
 	"strconv"
 	"strings"

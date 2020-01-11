@@ -8,7 +8,6 @@ package logic
 
 import (
 	"errors"
-	"github.com/studygolang/studygolang/config"
 	"math/rand"
 	"net/url"
 	"strconv"
@@ -340,7 +339,7 @@ const OsChinaDomain = "https://www.oschina.net"
 // ProjectLogoPrefix 开源项目 logo 前缀
 const ProjectLogoPrefix = "plogo"
 
-var PresetUsernames = strings.Split(config.ConfigFile.GetString("crawl.preset_users"), ",")
+var PresetUsernames = strings.Split(ConfigFile.GetString("crawl.preset_users"), ",")
 
 // ParseOneProject 处理单个 project
 func (ProjectLogic) ParseOneProject(projectUrl string) error {

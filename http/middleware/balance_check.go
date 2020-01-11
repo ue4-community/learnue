@@ -10,7 +10,7 @@ import (
 	"net/http"
 
 	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/util"
+	"github.com/studygolang/studygolang/modules/util"
 
 	echo "github.com/labstack/echo/v4"
 )

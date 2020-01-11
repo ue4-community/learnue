@@ -17,12 +17,10 @@ services:
 #      - ./template:/app/studygolang/template
 #      - ./log:/app/studygolang/log
   mysql:
-    image: mysql:5.7
+    image: mysql:8
     container_name: learnue_db
     ports:
       - "3307:3306"
-    networks:
-      - learnue_net
     environment:
       MYSQL_ROOT_PASSWORD: ${MysqlRootPassword}
       MYSQL_USER: ${MysqlUser}
@@ -33,13 +31,9 @@ services:
   redis:
     image: redis:5-alpine
     container_name: learnue_redis
-    networks:
-      - learnue_net
     environment:
       - TZ=Asia/Shanghai
     ports:
       - "6380:6379"
     command: redis-server
 
-networks:
-  learnue_net:

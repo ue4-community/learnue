@@ -13,7 +13,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/polaris1119/config"
 
-	"github.com/studygolang/studygolang/util"
+	"github.com/studygolang/studygolang/modules/util"
 )
 
 // OtherController 有些页面只是前端，因此通过这个页面统一控制

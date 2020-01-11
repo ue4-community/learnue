@@ -13,12 +13,12 @@ import (
 	"strings"
 	"time"
 
-	mycontext "github.com/studygolang/studygolang/context"
 	"github.com/studygolang/studygolang/db"
 	. "github.com/studygolang/studygolang/http"
 	"github.com/studygolang/studygolang/logic"
 	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/util"
+	mycontext "github.com/studygolang/studygolang/modules/context"
+	"github.com/studygolang/studygolang/modules/util"
 
 	"github.com/gorilla/context"
 	echo "github.com/labstack/echo/v4"

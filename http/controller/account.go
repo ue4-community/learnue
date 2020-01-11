@@ -7,20 +7,20 @@
 package controller
 
 import (
-	"github.com/studygolang/studygolang/config"
+	"github.com/studygolang/studygolang/db"
 	"html/template"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
 
-	"github.com/studygolang/studygolang/context"
 	. "github.com/studygolang/studygolang/http"
 	. "github.com/studygolang/studygolang/http/internal/helper"
 	"github.com/studygolang/studygolang/http/middleware"
 	"github.com/studygolang/studygolang/logic"
 	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/util"
+	"github.com/studygolang/studygolang/modules/context"
+	"github.com/studygolang/studygolang/modules/util"
 
 	"github.com/dchest/captcha"
 	"github.com/gorilla/sessions"
@@ -65,7 +65,7 @@ func (self AccountController) Register(ctx echo.Context) error {
 		"captchaId": captcha.NewLen(util.CaptchaLen),
 	}
 
-	disallowUsers := strings.Split(config.ConfigFile.GetString("account.disallow_user") , ",")
+	disallowUsers := strings.Split(db.ConfigFile.GetString("account.disallow_user") , ",")
 	for _, disallowUser := range disallowUsers {
 		if disallowUser == username {
 			data["error"] = username + " 被禁止使用，请换一个"
@@ -114,7 +114,7 @@ func (self AccountController) Register(ctx echo.Context) error {
 		emailUrl = "http://mail." + email[pos+1:]
 	}
 
-	if config.ConfigFile.GetBool("account.verify_email") {
+	if db.ConfigFile.GetBool("account.verify_email") {
 		data = map[string]interface{}{
 			"success": template.HTML(`
 				<div style="padding:30px 30px 50px 30px;">

@@ -25,6 +25,7 @@ package global
 import (
 	"flag"
 	"fmt"
+	"github.com/studygolang/studygolang/db"
 	"io"
 	"os"
 	"strings"
@@ -32,7 +33,6 @@ import (
 	"time"
 
 	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/config"
 )
 
 const (
@@ -93,14 +93,14 @@ func init() {
 
 	App.Date = fileInfo.ModTime()
 
-	App.Env = config.ConfigFile.GetString("global.env")
+	App.Env = db.ConfigFile.GetString("global.env")
 
-	App.CDNHttp = config.ConfigFile.GetString("qiniu.http_domain")
-	App.CDNHttps = config.ConfigFile.GetString("qiniu.https_domain")
+	App.CDNHttp = db.ConfigFile.GetString("qiniu.http_domain")
+	App.CDNHttps = db.ConfigFile.GetString("qiniu.https_domain")
 }
 
 func (this *app) Init(domain string) {
-	do := config.ConfigFile.GetString("global.domain")
+	do := db.ConfigFile.GetString("global.domain")
 	if do == "" {
 		do = domain
 	}

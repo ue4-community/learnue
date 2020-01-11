@@ -6,16 +6,16 @@
 
 // 可选择是否在启动主程序时，同时嵌入 indexer 和 crawler，减少内存占用
 
-package cmd
+package main
 
 import (
 	"flag"
+	"github.com/studygolang/studygolang/db"
 	"time"
 
-	"github.com/studygolang/studygolang/logic"
-	"github.com/studygolang/studygolang/config"
 	"github.com/polaris1119/logger"
 	"github.com/robfig/cron"
+	"github.com/studygolang/studygolang/logic"
 )
 
 var (
@@ -77,11 +77,11 @@ func autocrawl(needAll bool, whichSite string) {
 
 	// 定时增量
 	c := cron.New()
-	c.AddFunc(config.ConfigFile.GetString("crawl.spec"), func() {
+	c.AddFunc(db.ConfigFile.GetString("crawl.spec"), func() {
 		// 抓取 reddit
 		go logic.DefaultReddit.Parse("")
 
-		projectUrl := config.ConfigFile.GetString("crawl.project_url")
+		projectUrl := db.ConfigFile.GetString("crawl.project_url")
 		if projectUrl != "" {
 			// 抓取 project
 			go logic.DefaultProject.ParseProjectList(projectUrl)

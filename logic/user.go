@@ -9,9 +9,8 @@ package logic
 import (
 	"errors"
 	"fmt"
-	"github.com/studygolang/studygolang/config"
 	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/util"
+	"github.com/studygolang/studygolang/modules/util"
 	"math/rand"
 	"net/url"
 	"strings"
@@ -71,7 +70,7 @@ func (self UserLogic) CreateUser(ctx context.Context, form url.Values) (errMsg s
 		return
 	}
 
-	if config.ConfigFile.GetBool("account.verify_email") {
+	if ConfigFile.GetBool("account.verify_email") {
 		if !user.IsRoot {
 			// 避免前端伪造，传递 status=1
 			user.Status = model.UserStatusNoAudit

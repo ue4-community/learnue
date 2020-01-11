@@ -8,15 +8,15 @@ package controller
 
 import (
 	"fmt"
-	"github.com/studygolang/studygolang/config"
+	"github.com/studygolang/studygolang/db"
 	"net/http"
 	"regexp"
 	"strings"
 	"time"
 
-	"github.com/studygolang/studygolang/context"
 	"github.com/studygolang/studygolang/logic"
 	"github.com/studygolang/studygolang/model"
+	"github.com/studygolang/studygolang/modules/context"
 
 	echo "github.com/labstack/echo/v4"
 )
@@ -102,7 +102,7 @@ func (self DownloadController) FetchGoInstallPackage(ctx echo.Context) error {
 	goVersion := filenameReg.FindString(filename)
 	filePath := fmt.Sprintf("go/%s/%s", goVersion, filename)
 
-	dlUrls := strings.Split(config.ConfigFile.GetString("download.dl_urls"), ",")
+	dlUrls := strings.Split(db.ConfigFile.GetString("download.dl_urls"), ",")
 	for _, dlUrl := range dlUrls {
 		dlUrl += filePath
 		resp, err = self.headWithTimeout(dlUrl)

@@ -9,18 +9,17 @@ package controller
 import (
 	"bytes"
 	"fmt"
-	"github.com/studygolang/studygolang/config"
 	"html/template"
 	"net/http"
 	"net/url"
 	"runtime"
 	"strconv"
 
-	"github.com/studygolang/studygolang/context"
 	"github.com/studygolang/studygolang/db"
 	"github.com/studygolang/studygolang/global"
 	"github.com/studygolang/studygolang/logic"
 	"github.com/studygolang/studygolang/model"
+	"github.com/studygolang/studygolang/modules/context"
 
 	echo "github.com/labstack/echo/v4"
 	"github.com/polaris1119/goutils"
@@ -154,11 +153,11 @@ func (InstallController) SetupOptions(ctx echo.Context) error {
 		noQiniuConf = false
 	)
 
-	if config.ConfigFile.GetString("email.smtp_username") == "" {
+	if db.ConfigFile.GetString("email.smtp_username") == "" {
 		noEmailConf = true
 	}
 
-	if config.ConfigFile.GetString("qiniu.access_key") == "" {
+	if db.ConfigFile.GetString("qiniu.access_key") == "" {
 		noQiniuConf = true
 	}
 
@@ -172,22 +171,22 @@ func (InstallController) SetupOptions(ctx echo.Context) error {
 		for _, field := range emailFields {
 			if field == "smtp_port" && ctx.FormValue("smtp_port") == "" {
 				//config.ConfigFile.SetValue("email", field, "25")
-				config.ConfigFile.Set(fmt.Sprintf("email.%s", field), "25")
+				db.ConfigFile.Set(fmt.Sprintf("email.%s", field), "25")
 			} else {
-				config.ConfigFile.Set(fmt.Sprintf("email.%s", field), ctx.FormValue(field))
+				db.ConfigFile.Set(fmt.Sprintf("email.%s", field), ctx.FormValue(field))
 			}
 		}
 
 		//config.ConfigFile.SetSectionComments("qiniu", "图片存储在七牛云，如果没有可以通过 https://portal.qiniu.com/signup?code=3lfz4at7pxfma 免费申请")
 		qiniuFields := []string{"access_key", "secret_key", "bucket_name", "http_domain", "https_domain"}
 		for _, field := range qiniuFields {
-			config.ConfigFile.Set(fmt.Sprintf("qiniu.%s", field), ctx.FormValue(field))
+			db.ConfigFile.Set(fmt.Sprintf("qiniu.%s", field), ctx.FormValue(field))
 		}
 		if ctx.FormValue("https_domain") == "" {
-			config.ConfigFile.Set("qiniu.https_domain", ctx.FormValue("http_domain"))
+			db.ConfigFile.Set("qiniu.https_domain", ctx.FormValue("http_domain"))
 		}
 
-		if err := config.ConfigFile.SafeWriteConfigAs(config.ConfigPath); err != nil {
+		if err := db.ConfigFile.SafeWriteConfigAs(db.ConfigPath); err != nil {
 			fmt.Println("写入配置失败:" + err.Error())
 		}
 
@@ -205,7 +204,7 @@ func (InstallController) genConfig(ctx echo.Context) error {
 	env := ctx.FormValue("env")
 
 	//config.ConfigFile.SetSectionComments("global", "")
-	config.ConfigFile.Set("global.env", env)
+	db.ConfigFile.Set("global.env", env)
 
 	var (
 		logLevel = "DEBUG"
@@ -219,13 +218,13 @@ func (InstallController) genConfig(ctx echo.Context) error {
 		xormShowSql = "false"
 	}
 
-	config.ConfigFile.Set("global.log_level", logLevel)
-	config.ConfigFile.Set("global.cookie_secret", goutils.RandString(10))
-	config.ConfigFile.Set("global.data_path", "data/max_online_num")
+	db.ConfigFile.Set("global.log_level", logLevel)
+	db.ConfigFile.Set("global.cookie_secret", goutils.RandString(10))
+	db.ConfigFile.Set("global.data_path", "data/max_online_num")
 
 	//config.ConfigFile.SetSectionComments("listen", "")
-	config.ConfigFile.Set("listen.host", "")
-	config.ConfigFile.Set("listen.port", global.App.Port)
+	db.ConfigFile.Set("listen.host", "")
+	db.ConfigFile.Set("listen.port", global.App.Port)
 
 	dbname := ctx.FormValue("dbname")
 	uname := ctx.FormValue("uname")
@@ -234,42 +233,42 @@ func (InstallController) genConfig(ctx echo.Context) error {
 	dbport := ctx.FormValue("dbport")
 
 	//config.ConfigFile.SetSectionComments("mysql", "")
-	config.ConfigFile.Set("mysql.host", dbhost)
-	config.ConfigFile.Set("mysql.port", dbport)
-	config.ConfigFile.Set("mysql.user", uname)
-	config.ConfigFile.Set("mysql.password", pwd)
-	config.ConfigFile.Set("mysql.dbname", dbname)
-	config.ConfigFile.Set("mysql.charset", "utf8")
+	db.ConfigFile.Set("mysql.host", dbhost)
+	db.ConfigFile.Set("mysql.port", dbport)
+	db.ConfigFile.Set("mysql.user", uname)
+	db.ConfigFile.Set("mysql.password", pwd)
+	db.ConfigFile.Set("mysql.dbname", dbname)
+	db.ConfigFile.Set("mysql.charset", "utf8")
 	//config.ConfigFile.SetKeyComments("mysql.max_idle", "最大空闲连接数")
-	config.ConfigFile.Set("mysql.max_idle", "2")
+	db.ConfigFile.Set("mysql.max_idle", "2")
 	//config.ConfigFile.SetKeyComments("mysql.max_conn", "最大打开连接数")
-	config.ConfigFile.Set("mysql.max_conn", "10")
+	db.ConfigFile.Set("mysql.max_conn", "10")
 
 	//config.ConfigFile.SetSectionComments("xorm.")
-	config.ConfigFile.Set("xorm.show_sql", xormShowSql)
+	db.ConfigFile.Set("xorm.show_sql", xormShowSql)
 	//config.ConfigFile.SetKeyComments("xorm.log_level", "0-debug, 1-info, 2-warning, 3-error, 4-off, 5-unknow")
-	config.ConfigFile.Set("xorm.log_level", xormLogLevel)
+	db.ConfigFile.Set("xorm.log_level", xormLogLevel)
 
 	//config.ConfigFile.SetSectionComments("security.")
 	//config.ConfigFile.SetKeyComments("security.unsubscribe_token_key", "退订邮件使用的 token key")
-	config.ConfigFile.Set("security.unsubscribe_token_key", goutils.RandString(18))
+	db.ConfigFile.Set("security.unsubscribe_token_key", goutils.RandString(18))
 	//config.ConfigFile.SetKeyComments("security.activate_sign_salt", "注册激活邮件使用的 sign salt")
-	config.ConfigFile.Set("security.activate_sign_salt", goutils.RandString(18))
+	db.ConfigFile.Set("security.activate_sign_salt", goutils.RandString(18))
 
 	//config.ConfigFile.SetSectionComments("sensitive", "过滤广告")
 	//config.ConfigFile.SetKeyComments("sensitive.title", "标题关键词")
-	config.ConfigFile.Set("sensitive.title", "")
+	db.ConfigFile.Set("sensitive.title", "")
 	//config.ConfigFile.SetKeyComments("sensitive.content", "内容关键词")
-	config.ConfigFile.Set("sensitive.content", "")
+	db.ConfigFile.Set("sensitive.content", "")
 
 	//config.ConfigFile.SetSectionComments("search.搜索配置")
-	config.ConfigFile.Set("search.engine_url", "")
+	db.ConfigFile.Set("search.engine_url", "")
 
 	// 校验数据库配置是否正确有效
 	if err := db.TestDB(); err != nil {
 		return err
 	}
-	if err := config.ConfigFile.SafeWriteConfigAs(config.ConfigPath); err != nil {
+	if err := db.ConfigFile.SafeWriteConfigAs(db.ConfigPath); err != nil {
 		fmt.Println("写入配置失败:" + err.Error())
 	}
 	return nil
@@ -282,7 +281,7 @@ func renderInstall(ctx echo.Context, filename string, data map[string]interface{
 		data = make(map[string]interface{})
 	}
 
-	filename = config.TemplateDir + filename
+	filename = db.TemplateDir + filename
 
 	requestURI := ctx.Request().RequestURI
 	tpl, err := template.ParseFiles(filename)

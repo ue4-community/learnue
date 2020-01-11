@@ -13,11 +13,11 @@ import (
 	echo "github.com/labstack/echo/v4"
 	"github.com/polaris1119/goutils"
 
-	"github.com/studygolang/studygolang/context"
 	. "github.com/studygolang/studygolang/http"
 	"github.com/studygolang/studygolang/http/middleware"
 	"github.com/studygolang/studygolang/logic"
 	"github.com/studygolang/studygolang/model"
+	"github.com/studygolang/studygolang/modules/context"
 )
 
 // 在需要评论（喜欢）且要回调的地方注册评论（喜欢）对象

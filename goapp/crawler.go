@@ -4,19 +4,19 @@
 // http://studygolang.com
 // Author: polaris	polaris@studygolang.com
 
-package cmd
+package main
 
 import (
-	"github.com/studygolang/studygolang/config"
 	"github.com/polaris1119/keyword"
 	"github.com/polaris1119/logger"
+	"github.com/studygolang/studygolang/db"
 )
 
-func Indexer() {
-	logger.Init(config.ROOT+"/log", config.ConfigFile.GetString("global.log_level"))
-	go keyword.Extractor.Init(keyword.DefaultProps, true, config.ROOT+"/data/programming.txt,"+config.ROOT+"/data/dictionary.txt")
+func Crawler() {
+	logger.Init(db.ROOT+"/log", db.ConfigFile.GetString("global.log_level"), "crawl")
+	go keyword.Extractor.Init(keyword.DefaultProps, true, db.ROOT+"/data/programming.txt,"+db.ROOT+"/data/dictionary.txt")
 
-	IndexingServer()
+	CrawlServer()
 
 	select {}
 }

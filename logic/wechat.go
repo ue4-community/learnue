@@ -10,9 +10,8 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
-	"github.com/studygolang/studygolang/config"
 	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/util"
+	"github.com/studygolang/studygolang/modules/util"
 	"strings"
 	"time"
 
@@ -33,8 +32,8 @@ var jscodeRUL = "https://api.weixin.qq.com/sns/jscode2session"
 func (self WechatLogic) CheckSession(ctx context.Context, code string) (*model.WechatUser, error) {
 	objLog := GetLogger(ctx)
 
-	appid := config.ConfigFile.GetString("wechat.xcx.appid")
-	appsecret := config.ConfigFile.GetString("wechat.xcx.appsecret")
+	appid := ConfigFile.GetString("wechat.xcx.appid")
+	appsecret := ConfigFile.GetString("wechat.xcx.appsecret")
 
 	checkLoginURL := fmt.Sprintf("%s?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code",
 		jscodeRUL, appid, appsecret, code)
@@ -124,7 +123,7 @@ func (self WechatLogic) AutoReply(ctx context.Context, reqData []byte) (*model.W
 		switch wechatMsg.Event {
 		case model.WeEventSubscribe:
 			wechatMsg.MsgType = model.WeMsgTypeText
-			return self.wechatResponse(ctx, config.ConfigFile.GetString("wechat.subscribe"), wechatMsg)
+			return self.wechatResponse(ctx, ConfigFile.GetString("wechat.subscribe"), wechatMsg)
 		}
 	}
 
@@ -205,7 +204,7 @@ func (self WechatLogic) readingContent(ctx context.Context, wechatMsg *model.Wec
 	if wechatMsg.Content == "最新晨读" {
 		readings = DefaultReading.FindBy(ctx, 1, model.RtypeGo)
 		if len(readings) == 0 {
-			return self.wechatResponse(ctx, config.ConfigFile.GetString("wechat.not_found"), wechatMsg)
+			return self.wechatResponse(ctx, ConfigFile.GetString("wechat.not_found"), wechatMsg)
 		}
 
 		return self.wechatResponse(ctx, formatContent(readings[0]), wechatMsg)
@@ -231,7 +230,7 @@ func (self WechatLogic) searchContent(ctx context.Context, wechatMsg *model.Wech
 	}
 
 	if respBody.NumFound == 0 {
-		return self.wechatResponse(ctx, config.ConfigFile.GetString("wechat.not_found"), wechatMsg)
+		return self.wechatResponse(ctx, ConfigFile.GetString("wechat.not_found"), wechatMsg)
 	}
 
 	host := WebsiteSetting.Domain
@@ -276,7 +275,7 @@ func (self WechatLogic) wechatResponse(ctx context.Context, respContent string, 
 	case model.WeMsgTypeText:
 		wechatReply.Content = &model.CData{Val: respContent}
 	default:
-		wechatReply.Content = &model.CData{Val: config.ConfigFile.GetString("wechat.not_found")}
+		wechatReply.Content = &model.CData{Val: ConfigFile.GetString("wechat.not_found")}
 	}
 
 	return wechatReply, nil

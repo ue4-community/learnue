@@ -3,7 +3,7 @@ FROM golang:1.12
 
 WORKDIR /app/studygolang
 
-COPY . /app/studygolang
+COPY .. /app/studygolang
 
 RUN make build
 

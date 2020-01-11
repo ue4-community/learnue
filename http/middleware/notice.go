@@ -9,9 +9,9 @@ package middleware
 import (
 	"fmt"
 
-	"github.com/studygolang/studygolang/context"
 	"github.com/studygolang/studygolang/logic"
 	"github.com/studygolang/studygolang/model"
+	"github.com/studygolang/studygolang/modules/context"
 
 	echo "github.com/labstack/echo/v4"
 )

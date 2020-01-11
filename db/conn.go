@@ -12,8 +12,6 @@ import (
 	"fmt"
 	"github.com/spf13/viper"
 
-	. "github.com/studygolang/studygolang/config"
-
 	_ "github.com/go-sql-driver/mysql"
 	"xorm.io/core"
 	"xorm.io/xorm"

@@ -7,7 +7,6 @@
 package util_test
 
 import (
-	"github.com/studygolang/studygolang/util"
 	"testing"
 	"time"
 )
@@ -49,7 +48,7 @@ func TestTimeAgo(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := util.TimeAgo(tt.args.t); got != tt.want {
+			if got := TimeAgo(tt.args.t); got != tt.want {
 				t.Errorf("TimeAgo() = %v, want %v", got, tt.want)
 			}
 		})

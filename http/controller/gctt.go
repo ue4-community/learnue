@@ -10,22 +10,22 @@ import (
 	"crypto/hmac"
 	"crypto/sha1"
 	"fmt"
-	"github.com/studygolang/studygolang/config"
+	"github.com/studygolang/studygolang/db"
 	"html/template"
 	"io/ioutil"
 	"net/http"
 	"strconv"
 
-	"github.com/studygolang/studygolang/context"
 	. "github.com/studygolang/studygolang/http"
 	"github.com/studygolang/studygolang/http/middleware"
 	"github.com/studygolang/studygolang/logic"
 	"github.com/studygolang/studygolang/model"
+	"github.com/studygolang/studygolang/modules/context"
 
 	echo "github.com/labstack/echo/v4"
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/logger"
-	"github.com/studygolang/studygolang/echoutils"
+	"github.com/studygolang/studygolang/modules/echoutils"
 )
 
 type GCTTController struct{}
@@ -206,7 +206,7 @@ func (GCTTController) Webhook(ctx echo.Context) error {
 
 	header := ctx.Request().Header
 
-	tokenSecret := config.ConfigFile.GetString("gctt.token_secret")
+	tokenSecret := db.ConfigFile.GetString("gctt.token_secret")
 	ok := checkMAC(body, header.Get("X-Hub-Signature"), []byte(tokenSecret))
 	if !ok {
 		logger.Errorln("GCTTController Webhook checkMAC error", string(body))

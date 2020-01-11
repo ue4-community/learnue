@@ -7,7 +7,6 @@
 package model
 
 import (
-	"github.com/studygolang/studygolang/config"
 	"github.com/studygolang/studygolang/db"
 
 	"github.com/polaris1119/logger"
@@ -150,7 +149,7 @@ func PublishFeed(object interface{}, objectExt interface{}, me *Me) {
 		}
 	}
 
-	feedDay := config.ConfigFile.GetInt("feed.day")
+	feedDay := db.ConfigFile.GetInt("feed.day")
 	feed.Seq = feedDay * 24
 	if me != nil && me.IsAdmin {
 		feed.Seq += 100000

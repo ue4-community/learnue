@@ -14,7 +14,7 @@ import (
 	. "github.com/studygolang/studygolang/db"
 	"github.com/studygolang/studygolang/global"
 	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/util"
+	"github.com/studygolang/studygolang/modules/util"
 
 	"github.com/polaris1119/goutils"
 	"github.com/polaris1119/set"
