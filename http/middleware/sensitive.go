@@ -7,7 +7,7 @@
 package middleware
 
 import (
-	"github.com/studygolang/studygolang/db"
+	"github.com/studygolang/studygolang/modules/setting"
 	"net/http"
 	"strings"
 
@@ -26,8 +26,8 @@ var (
 )
 
 func init() {
-	titleSensitives = strings.Split(db.ConfigFile.GetString("sensitive.title"), ",")
-	contentSensitives = db.ConfigFile.GetString("sensitive.content")
+	titleSensitives = strings.Split(setting.Get().GetString("sensitive.title"), ",")
+	contentSensitives = setting.Get().GetString("sensitive.content")
 }
 
 // Sensivite 用于 echo 框架的过滤发布敏感词（广告）

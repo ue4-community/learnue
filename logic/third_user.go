@@ -9,6 +9,7 @@ package logic
 import (
 	"encoding/json"
 	"errors"
+	"github.com/studygolang/studygolang/modules/setting"
 	"io/ioutil"
 
 	. "github.com/studygolang/studygolang/db"
@@ -27,8 +28,8 @@ const GiteaAPIBaseUrl = "https://gitea.com/api/v1"
 
 func init() {
 	githubConf = &oauth2.Config{
-		ClientID:     ConfigFile.GetString("github.client_id"),
-		ClientSecret: ConfigFile.GetString("github.client_secret"),
+		ClientID:     setting.Get().GetString("github.client_id"),
+		ClientSecret: setting.Get().GetString("github.client_secret"),
 		Scopes:       []string{"user:email"},
 		Endpoint: oauth2.Endpoint{
 			AuthURL:  "https://github.com/login/oauth/authorize",
@@ -37,8 +38,8 @@ func init() {
 	}
 
 	giteaConf = &oauth2.Config{
-		ClientID:     ConfigFile.GetString("gitea.client_id"),
-		ClientSecret: ConfigFile.GetString("gitea.client_secret"),
+		ClientID:     setting.Get().GetString("gitea.client_id"),
+		ClientSecret: setting.Get().GetString("gitea.client_secret"),
 		Endpoint: oauth2.Endpoint{
 			AuthURL:  "https://gitea.com/login/oauth/authorize",
 			TokenURL: "https://gitea.com/login/oauth/access_token",

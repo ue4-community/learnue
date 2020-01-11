@@ -8,6 +8,7 @@ package logic
 
 import (
 	"context"
+	"github.com/studygolang/studygolang/modules/setting"
 	"strconv"
 	"time"
 
@@ -85,9 +86,9 @@ func (self FeedLogic) AutoUpdateSeq() {
 		return
 	}
 
-	feedDay := ConfigFile.GetInt("feed.day")
-	cmtWeight := ConfigFile.GetInt("feed.cmt_weight")
-	viewWeight := ConfigFile.GetInt("feed.view_weight")
+	feedDay := setting.Get().GetInt("feed.day")
+	cmtWeight := setting.Get().GetInt("feed.cmt_weight")
+	viewWeight := setting.Get().GetInt("feed.view_weight")
 
 	var err error
 	offset, limit := 0, 100
@@ -239,9 +240,9 @@ func (FeedLogic) publish(object interface{}, objectExt interface{}, me *model.Me
 }
 
 func (self FeedLogic) updateSeq(objid, objtype, cmtnum, likenum, viewnum int) {
-	cmtWeight := ConfigFile.GetInt("feed.cmt_weight")
-	likeWeight := ConfigFile.GetInt("feed.like_weight")
-	viewWeight := ConfigFile.GetInt("feed.view_weight")
+	cmtWeight := setting.Get().GetInt("feed.cmt_weight")
+	likeWeight := setting.Get().GetInt("feed.like_weight")
+	viewWeight := setting.Get().GetInt("feed.view_weight")
 
 	go func() {
 		feed := &model.Feed{}
@@ -254,7 +255,7 @@ func (self FeedLogic) updateSeq(objid, objtype, cmtnum, likenum, viewnum int) {
 			return
 		}
 
-		feedDay := ConfigFile.GetInt("feed.day")
+		feedDay := setting.Get().GetInt("feed.day")
 		elapse := int(time.Now().Sub(time.Time(feed.CreatedAt)).Hours())
 
 		if feed.Uid > 0 {

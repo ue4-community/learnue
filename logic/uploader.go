@@ -10,6 +10,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"github.com/studygolang/studygolang/modules/setting"
 	"image"
 	_ "image/gif"
 	_ "image/jpeg"
@@ -52,10 +53,10 @@ type UploaderLogic struct {
 var DefaultUploader = &UploaderLogic{}
 
 func (this *UploaderLogic) InitQiniu() {
-	conf.ACCESS_KEY = ConfigFile.GetString("qiniu.access_key")
-	conf.SECRET_KEY = ConfigFile.GetString("qiniu.secret_key")
-	conf.UP_HOST = ConfigFile.GetString("qiniu.up_host")
-	this.bucketName = ConfigFile.GetString("qiniu.bucket_name")
+	conf.ACCESS_KEY = setting.Get().GetString("qiniu.access_key")
+	conf.SECRET_KEY = setting.Get().GetString("qiniu.secret_key")
+	conf.UP_HOST = setting.Get().GetString("qiniu.up_host")
+	this.bucketName = setting.Get().GetString("qiniu.bucket_name")
 }
 
 // 生成上传凭证

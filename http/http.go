@@ -9,7 +9,7 @@ package http
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/studygolang/studygolang/db"
+	"github.com/studygolang/studygolang/modules/setting"
 	"html/template"
 	"math"
 	"math/rand"
@@ -31,7 +31,7 @@ import (
 	"github.com/polaris1119/times"
 )
 
-var Store = sessions.NewCookieStore([]byte(db.ConfigFile.GetString("global.cookie_secret")))
+var Store = sessions.NewCookieStore([]byte(setting.Get().GetString("global.cookie_secret")))
 
 func SetLoginCookie(ctx echo.Context, username string) {
 	Store.Options.HttpOnly = true
@@ -197,7 +197,7 @@ var funcMap = template.FuncMap{
 
 func tplInclude(file string, dot map[string]interface{}) template.HTML {
 	var buffer = &bytes.Buffer{}
-	tpl, err := template.New(filepath.Base(file)).Funcs(funcMap).ParseFiles(db.TemplateDir + file)
+	tpl, err := template.New(filepath.Base(file)).Funcs(funcMap).ParseFiles(setting.TemplateDir + file)
 	// tpl, err := template.ParseFiles(config.TemplateDir + file)
 	if err != nil {
 		logger.Errorf("parse template file(%s) error:%v\n", file, err)
@@ -248,7 +248,7 @@ func Render(ctx echo.Context, contentTpl string, data map[string]interface{}) er
 	// 这样，在ParseFiles时，新返回的*Template便还是原来的模板实例
 	htmlFiles := strings.Split(contentTpl, ",")
 	for i, contentTpl := range htmlFiles {
-		htmlFiles[i] = db.TemplateDir + contentTpl
+		htmlFiles[i] = setting.TemplateDir + contentTpl
 	}
 	tpl, err := template.New("layout.html").Funcs(funcMap).
 		Funcs(template.FuncMap{"include": tplInclude}).ParseFiles(htmlFiles...)
@@ -290,7 +290,7 @@ func RenderAdmin(ctx echo.Context, contentTpl string, data map[string]interface{
 	// 这样，在ParseFiles时，新返回的*Template便还是原来的模板实例
 	htmlFiles := strings.Split(contentTpl, ",")
 	for i, contentTpl := range htmlFiles {
-		htmlFiles[i] = db.TemplateDir + "admin/" + contentTpl
+		htmlFiles[i] = setting.TemplateDir + "admin/" + contentTpl
 	}
 
 	requestURI := Request(ctx).RequestURI
@@ -320,7 +320,7 @@ func RenderQuery(ctx echo.Context, contentTpl string, data map[string]interface{
 	contentTpl = "common_query.html," + contentTpl
 	contentTpls := strings.Split(contentTpl, ",")
 	for i, contentTpl := range contentTpls {
-		contentTpls[i] = db.TemplateDir + "admin/" + strings.TrimSpace(contentTpl)
+		contentTpls[i] = setting.TemplateDir + "admin/" + strings.TrimSpace(contentTpl)
 	}
 
 	requestURI := Request(ctx).RequestURI

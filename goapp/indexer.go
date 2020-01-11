@@ -9,12 +9,12 @@ package main
 import (
 	"github.com/polaris1119/keyword"
 	"github.com/polaris1119/logger"
-	"github.com/studygolang/studygolang/db"
+	"github.com/studygolang/studygolang/modules/setting"
 )
 
 func Indexer() {
-	logger.Init(db.ROOT+"/log", db.ConfigFile.GetString("global.log_level"))
-	go keyword.Extractor.Init(keyword.DefaultProps, true, db.ROOT+"/data/programming.txt,"+db.ROOT+"/data/dictionary.txt")
+	logger.Init(setting.ROOT+"/log", setting.Get().GetString("global.log_level"))
+	go keyword.Extractor.Init(keyword.DefaultProps, true, setting.ROOT+"/data/programming.txt,"+setting.ROOT+"/data/dictionary.txt")
 
 	IndexingServer()
 

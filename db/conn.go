@@ -11,6 +11,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/spf13/viper"
+	"github.com/studygolang/studygolang/modules/setting"
 
 	_ "github.com/go-sql-driver/mysql"
 	"xorm.io/core"
@@ -22,7 +23,7 @@ var MasterDB *xorm.Engine
 var dns string
 
 func init() {
-	mysqlConfig := ConfigFile.Sub("mysql")
+	mysqlConfig := setting.Get().Sub("mysql")
 	if mysqlConfig == nil {
 		fmt.Println("get mysql config error:")
 		return
@@ -48,7 +49,7 @@ var (
 
 // TestDB 测试数据库
 func TestDB() error {
-	mysqlConfig:= ConfigFile.Sub("mysql")
+	mysqlConfig:= setting.Get().Sub("mysql")
 	if mysqlConfig == nil {
 		fmt.Println("get mysql config error:")
 		return errors.New("get mysql config error")
@@ -91,7 +92,7 @@ func TestDB() error {
 }
 
 func Init() error {
-	mysqlConfig := ConfigFile.Sub("mysql")
+	mysqlConfig := setting.Get().Sub("mysql")
 	if mysqlConfig == nil {
 		fmt.Println("get mysql config error")
 		return errors.New("get mysql config error")
@@ -126,14 +127,14 @@ func initEngine() error {
 		return err
 	}
 
-	maxIdle := ConfigFile.GetInt("mysql.max_idle")
-	maxConn := ConfigFile.GetInt("mysql.max_conn")
+	maxIdle := setting.Get().GetInt("mysql.max_idle")
+	maxConn := setting.Get().GetInt("mysql.max_conn")
 
 	MasterDB.SetMaxIdleConns(maxIdle)
 	MasterDB.SetMaxOpenConns(maxConn)
 
-	showSQL := ConfigFile.GetBool("xorm.show_sql")
-	logLevel := ConfigFile.GetInt("xorm.log_level")
+	showSQL := setting.Get().GetBool("xorm.show_sql")
+	logLevel := setting.Get().GetInt("xorm.log_level")
 
 	MasterDB.ShowSQL(showSQL)
 	MasterDB.Logger().SetLevel(core.LogLevel(logLevel))

@@ -7,7 +7,7 @@
 package controller
 
 import (
-	"github.com/studygolang/studygolang/db"
+	"github.com/studygolang/studygolang/modules/setting"
 	"html/template"
 	"net/http"
 	"net/url"
@@ -65,7 +65,7 @@ func (self AccountController) Register(ctx echo.Context) error {
 		"captchaId": captcha.NewLen(util.CaptchaLen),
 	}
 
-	disallowUsers := strings.Split(db.ConfigFile.GetString("account.disallow_user") , ",")
+	disallowUsers := strings.Split(setting.Get().GetString("account.disallow_user") , ",")
 	for _, disallowUser := range disallowUsers {
 		if disallowUser == username {
 			data["error"] = username + " 被禁止使用，请换一个"
@@ -114,7 +114,7 @@ func (self AccountController) Register(ctx echo.Context) error {
 		emailUrl = "http://mail." + email[pos+1:]
 	}
 
-	if db.ConfigFile.GetBool("account.verify_email") {
+	if setting.Get().GetBool("account.verify_email") {
 		data = map[string]interface{}{
 			"success": template.HTML(`
 				<div style="padding:30px 30px 50px 30px;">

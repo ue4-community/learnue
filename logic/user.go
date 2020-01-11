@@ -10,6 +10,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/studygolang/studygolang/model"
+	"github.com/studygolang/studygolang/modules/setting"
 	"github.com/studygolang/studygolang/modules/util"
 	"math/rand"
 	"net/url"
@@ -70,7 +71,7 @@ func (self UserLogic) CreateUser(ctx context.Context, form url.Values) (errMsg s
 		return
 	}
 
-	if ConfigFile.GetBool("account.verify_email") {
+	if setting.Get().GetBool("account.verify_email") {
 		if !user.IsRoot {
 			// 避免前端伪造，传递 status=1
 			user.Status = model.UserStatusNoAudit

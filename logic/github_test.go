@@ -15,7 +15,7 @@ import (
 )
 
 func TestPullPR(t *testing.T) {
-	logger.Init(db.ROOT+"/log", db.ConfigFile.GetString("global.log_level"))
+	logger.Init(setting.ROOT+"/log", setting.Get().GetString("global.log_level"))
 
 	err := logic.DefaultGithub.PullPR("studygolang/GCTT", true)
 	if err != nil {
@@ -24,7 +24,7 @@ func TestPullPR(t *testing.T) {
 }
 
 func TestSyncIssues(t *testing.T) {
-	logger.Init(db.ROOT+"/log", db.ConfigFile.GetString("global.log_level"))
+	logger.Init(setting.ROOT+"/log", setting.Get().GetString("global.log_level"))
 
 	err := logic.DefaultGithub.SyncIssues("studygolang/GCTT", true)
 	if err != nil {
@@ -33,7 +33,7 @@ func TestSyncIssues(t *testing.T) {
 }
 
 func TestIssueEvent(t *testing.T) {
-	logger.Init(db.ROOT+"/log", db.ConfigFile.GetString("global.log_level"))
+	logger.Init(setting.ROOT+"/log", setting.Get().GetString("global.log_level"))
 
 	body := []byte(`{
 		"action": "closed",

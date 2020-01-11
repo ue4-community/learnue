@@ -10,7 +10,7 @@ package main
 
 import (
 	"flag"
-	"github.com/studygolang/studygolang/db"
+	"github.com/studygolang/studygolang/modules/setting"
 	"time"
 
 	"github.com/polaris1119/logger"
@@ -77,11 +77,11 @@ func autocrawl(needAll bool, whichSite string) {
 
 	// 定时增量
 	c := cron.New()
-	c.AddFunc(db.ConfigFile.GetString("crawl.spec"), func() {
+	c.AddFunc(setting.Get().GetString("crawl.spec"), func() {
 		// 抓取 reddit
 		go logic.DefaultReddit.Parse("")
 
-		projectUrl := db.ConfigFile.GetString("crawl.project_url")
+		projectUrl := setting.Get().GetString("crawl.project_url")
 		if projectUrl != "" {
 			// 抓取 project
 			go logic.DefaultProject.ParseProjectList(projectUrl)

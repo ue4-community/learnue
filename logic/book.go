@@ -8,7 +8,7 @@ package logic
 
 import (
 	"encoding/json"
-	"github.com/studygolang/studygolang/db"
+	"github.com/studygolang/studygolang/modules/setting"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -351,7 +351,7 @@ func (this *book) delUserFromRedis(user int) {
 }
 
 func (this *book) isStoreRedis() bool {
-	onlineStore := db.ConfigFile.GetString("stat.online_store")
+	onlineStore := setting.Get().GetString("stat.online_store")
 	return strings.ToLower(onlineStore) == "redis"
 }
 
@@ -397,9 +397,9 @@ func getDataFile() string {
 	if dataFile != "" {
 		return dataFile
 	}
-	dataFile = db.ConfigFile.GetString("global.data_path")
+	dataFile = setting.Get().GetString("global.data_path")
 	if !filepath.IsAbs(dataFile) {
-		dataFile = db.ROOT + "/" + dataFile
+		dataFile = setting.ROOT + "/" + dataFile
 	}
 	// 文件夹不存在，则创建
 	dataPath := filepath.Dir(dataFile)

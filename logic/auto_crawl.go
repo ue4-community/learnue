@@ -9,6 +9,7 @@ package logic
 import (
 	"errors"
 	"fmt"
+	"github.com/studygolang/studygolang/modules/setting"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -26,7 +27,7 @@ import (
 	"golang.org/x/net/context"
 )
 
-var titlePattern = ConfigFile.GetString("crawl.article_title_pattern")
+var titlePattern = setting.Get().GetString("crawl.article_title_pattern")
 
 type AutoCrawlLogic struct{}
 

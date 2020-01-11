@@ -7,7 +7,7 @@
 package main
 
 import (
-	"github.com/studygolang/studygolang/db"
+	"github.com/studygolang/studygolang/modules/setting"
 	"io/ioutil"
 	"math/rand"
 	"os"
@@ -56,15 +56,15 @@ func main() {
 
 	global.App.Init(logic.WebsiteSetting.Domain)
 
-	logger.Init(db.ROOT+"/log", db.ConfigFile.GetString("global.log_level"))
+	logger.Init(setting.ROOT+"/log", setting.Get().GetString("global.log_level"))
 
-	go keyword.Extractor.Init(keyword.DefaultProps, true, db.ROOT+"/data/programming.txt,"+db.ROOT+"/data/dictionary.txt")
+	go keyword.Extractor.Init(keyword.DefaultProps, true, setting.ROOT+"/data/programming.txt,"+setting.ROOT+"/data/dictionary.txt")
 
 	go logic.Book.ClearRedisUser()
 
 	go ServeBackGround()
 	// go pprof
-	Pprof(db.ConfigFile.GetString("global.pprof"))
+	Pprof(setting.Get().GetString("global.pprof"))
 
 	e := echo.New()
 
@@ -93,18 +93,18 @@ func main() {
 }
 
 func getAddr() string {
-	host := db.ConfigFile.GetString("listen.host")
+	host := setting.Get().GetString("listen.host")
 	if host == "" {
 		global.App.Host = "localhost"
 	} else {
 		global.App.Host = host
 	}
-	global.App.Port = db.ConfigFile.GetString("listen.port")
+	global.App.Port = setting.Get().GetString("listen.port")
 	return host + ":" + global.App.Port
 }
 
 func savePid() {
-	pidFilename := db.ROOT + "/pid/" + filepath.Base(os.Args[0]) + ".pid"
+	pidFilename := setting.ROOT + "/pid/" + filepath.Base(os.Args[0]) + ".pid"
 	pid := os.Getpid()
 
 	ioutil.WriteFile(pidFilename, []byte(strconv.Itoa(pid)), 0755)
