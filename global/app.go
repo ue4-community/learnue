@@ -35,11 +35,6 @@ import (
 	"github.com/studygolang/studygolang/model"
 )
 
-const (
-	DefaultCDNHttp  = "http://test.static.studygolang.com/"
-	DefaultCDNHttps = "https://static.studygolang.com/"
-)
-
 var Build string
 
 type app struct {

@@ -384,7 +384,7 @@ func executeTpl(ctx echo.Context, tpl *template.Template, data map[string]interf
 	}
 
 	staticDomain := ""
-	if global.OnlineEnv() {
+	if global.OnlineEnv() && setting.Get().GetBool("global.use_cdn") {
 		staticDomain = strings.TrimRight(cdnDomain, "/")
 	}
 
