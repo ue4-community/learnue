@@ -23,6 +23,9 @@ FROM golang:1.13-alpine
 WORKDIR /app
 ENV LEARNUE_HOME=/app
 COPY --from=build-env /src/goapp/goapp .
-COPY --from=build-env /src/config ./config
+COPY ./config ./config
+COPY ./template ./template
+COPY ./static ./static
+RUN ls -la
 EXPOSE 8088
 CMD ./goapp
