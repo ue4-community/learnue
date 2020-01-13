@@ -414,8 +414,10 @@ func executeTpl(ctx echo.Context, tpl *template.Template, data map[string]interf
 	return ctx.HTML(http.StatusOK, buf.String())
 }
 
+//若是处于代理后边,代理应该转发一个X-Forwarded-Proto来表示请求的协议
 func CheckIsHttps(ctx echo.Context) bool {
-	isHttps := goutils.MustBool(ctx.Request().Header.Get("X-Https"))
+	proto := ctx.Request().Header.Get("X-Forwarded-Proto")
+	isHttps := proto == "https"
 	if logic.WebsiteSetting.OnlyHttps {
 		isHttps = true
 	}
