@@ -50,7 +50,6 @@ welcome.png
 .DS_Store
 /env.ini
 ssl
-bin
 mysql_data/
 vendor/
 .env

@@ -1,10 +1,15 @@
 .git
+.idea
+caddy
+docs
 bundles
 pkg
 bin
 log
 pid
 sitemap
+mysql_data
+vendor
 assets
 *.swp
 *.o
