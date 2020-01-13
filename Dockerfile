@@ -26,6 +26,7 @@ COPY --from=build-env /src/goapp/goapp .
 COPY ./config ./config
 COPY ./template ./template
 COPY ./static ./static
+COPY ./data ./data
 RUN ls -la
 EXPOSE 8088
 CMD ./goapp
