@@ -12,6 +12,7 @@ import (
 	"fmt"
 	"github.com/spf13/viper"
 	"github.com/studygolang/studygolang/modules/setting"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 	"xorm.io/core"
@@ -49,7 +50,7 @@ var (
 
 // TestDB 测试数据库
 func TestDB() error {
-	mysqlConfig:= setting.Get().Sub("mysql")
+	mysqlConfig := setting.Get().Sub("mysql")
 	if mysqlConfig == nil {
 		fmt.Println("get mysql config error:")
 		return errors.New("get mysql config error")
@@ -138,6 +139,7 @@ func initEngine() error {
 
 	MasterDB.ShowSQL(showSQL)
 	MasterDB.Logger().SetLevel(core.LogLevel(logLevel))
+	MasterDB.TZLocation, _ = time.LoadLocation("Asia/Shanghai")
 
 	// 启用缓存
 	// cacher := xorm.NewLRUCacher(xorm.NewMemoryStore(), 1000)
