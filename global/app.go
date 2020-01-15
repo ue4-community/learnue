@@ -23,10 +23,8 @@ To set these manually use -ldflags together with -X, like in this example:
 package global
 
 import (
-	"flag"
 	"fmt"
 	"github.com/studygolang/studygolang/modules/setting"
-	"io"
 	"os"
 	"strings"
 	"sync"
@@ -34,8 +32,6 @@ import (
 
 	"github.com/studygolang/studygolang/model"
 )
-
-var Build string
 
 type app struct {
 	Name    string
@@ -67,8 +63,6 @@ type app struct {
 
 var App = &app{}
 
-var showVersion = flag.Bool("version", false, "Print version of this binary")
-
 const (
 	DEV  = "dev"
 	TEST = "test"
@@ -78,7 +72,6 @@ const (
 func init() {
 	App.Name = os.Args[0]
 	App.Version = "V4.0.0"
-	App.Build = Build
 	App.LaunchTime = time.Now()
 
 	fileInfo, err := os.Stat(os.Args[0])
@@ -129,23 +122,6 @@ func (this *app) CanonicalCDN(isHTTPS bool) string {
 	}
 
 	return cdnDomain
-}
-
-func PrintVersion(w io.Writer) {
-	if !flag.Parsed() {
-		flag.Parse()
-	}
-
-	if showVersion == nil || !*showVersion {
-		return
-	}
-
-	fmt.Fprintf(w, "Binary: %s\n", App.Name)
-	fmt.Fprintf(w, "Version: %s\n", App.Version)
-	fmt.Fprintf(w, "Build: %s\n", App.Build)
-	fmt.Fprintf(w, "Compile date: %s\n", App.Date.Format("2006-01-02 15:04:05"))
-	fmt.Fprintf(w, "Env: %s\n", App.Env)
-	os.Exit(0)
 }
 
 func OnlineEnv() bool {

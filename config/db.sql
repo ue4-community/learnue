@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `content` text NOT NULL,
   `uid` int unsigned NOT NULL COMMENT '回复者',
   `floor` int unsigned NOT NULL COMMENT '第几楼',
-  `likenum` int unsigned NOT NULL COMMENT '喜欢数',
+  `likenum` int unsigned NOT NULL DEFAULT 0 COMMENT '喜欢数',
   `flag` tinyint NOT NULL DEFAULT 0 COMMENT '审核标识,0-未审核;1-已审核;2-审核删除;3-用户自己删除',
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`cid`),

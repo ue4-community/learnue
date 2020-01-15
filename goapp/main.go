@@ -49,9 +49,6 @@ func main() {
 		}
 	}
 
-	// 支持根据参数打印版本信息
-	global.PrintVersion(os.Stdout)
-
 	savePid()
 
 	global.App.Init(logic.WebsiteSetting.Domain)
@@ -69,7 +66,6 @@ func main() {
 	e := echo.New()
 
 	serveStatic(e)
-
 	e.Use(thirdmw.EchoLogger())
 	e.Use(mw.Recover())
 	e.Use(pwm.Installed(filterPrefixs))
