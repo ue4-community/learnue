@@ -45,7 +45,7 @@ func (self FeedController) List(ctx echo.Context) error {
 		Title:       logic.WebsiteSetting.Name,
 		Link:        &feeds.Link{Href: link},
 		Description: logic.WebsiteSetting.Slogan,
-		Author:      &feeds.Author{Name: "polaris", Email: "polaris@studygolang.com"},
+		Author:      &feeds.Author{Name: "learnue", Email: "admin@learnue.com"},
 		Created:     now,
 		Updated:     now,
 	}
