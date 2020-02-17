@@ -9,3 +9,15 @@ https://dev.learnue.com {
 http://dev.learnue.com {
     redir https://dev.learnue.com{uri}
 }
+
+https://new.learnue.com {
+    tls ./cert.pem ./key.pem
+    gzip
+    proxy / 127.0.0.1:3000 {
+        transparent
+    }
+}
+
+http://new.learnue.com {
+    redir https://new.learnue.com{uri}
+}
