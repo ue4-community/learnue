@@ -367,11 +367,12 @@ func executeTpl(ctx echo.Context, tpl *template.Template, data map[string]interf
 	}
 
 	// websocket主机
-	if global.OnlineEnv() {
-		data["wshost"] = global.App.Domain
-	} else {
-		data["wshost"] = global.App.Host + ":" + global.App.Port
-	}
+	data["wshost"] = global.App.Domain
+	//if global.OnlineEnv() {
+	//	data["wshost"] = global.App.Domain
+	//} else {
+	//	data["wshost"] = global.App.Host + ":" + global.App.Port
+	//}
 	global.App.SetUptime()
 	global.App.SetCopyright()
 
