@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/ue4-community/learnue/modules/goutils"
 )
 
 // EchoAsync 用于 echo 框架的异步处理中间件

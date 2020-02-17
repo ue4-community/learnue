@@ -9,13 +9,13 @@ package logic
 import (
 	"encoding/json"
 	"errors"
-	. "github.com/studygolang/studygolang/db"
+	. "github.com/ue4-community/learnue/db"
 	"net/url"
 	"strings"
 
-	"github.com/studygolang/studygolang/model"
+	"github.com/ue4-community/learnue/model"
 
-	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/ue4-community/learnue/modules/goutils"
 	"golang.org/x/net/context"
 )
 

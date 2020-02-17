@@ -6,7 +6,7 @@ import (
 	"time"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/logger"
 	"github.com/twinj/uuid"
 )
 

@@ -3,12 +3,12 @@ package nosql
 import (
 	"errors"
 	"fmt"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 	"os"
 	"time"
 
 	"github.com/garyburd/redigo/redis"
-	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/ue4-community/learnue/modules/goutils"
 )
 
 // TODO:redis 操作出错，报警？

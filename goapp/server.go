@@ -10,12 +10,12 @@ package main
 
 import (
 	"flag"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 	"time"
 
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/logger"
 	"github.com/robfig/cron"
-	"github.com/studygolang/studygolang/logic"
+	"github.com/ue4-community/learnue/logic"
 )
 
 var (

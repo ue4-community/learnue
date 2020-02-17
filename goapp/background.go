@@ -8,16 +8,16 @@ package main
 
 import (
 	"flag"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 	"time"
 
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/logger"
 	"github.com/robfig/cron"
 
-	"github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/global"
-	"github.com/studygolang/studygolang/logic"
-	"github.com/studygolang/studygolang/model"
+	"github.com/ue4-community/learnue/db"
+	"github.com/ue4-community/learnue/global"
+	"github.com/ue4-community/learnue/logic"
+	"github.com/ue4-community/learnue/model"
 )
 
 var (

@@ -11,7 +11,7 @@ import (
 "errors"
 "fmt"
 "github.com/spf13/viper"
-"github.com/studygolang/studygolang/modules/setting"
+"github.com/ue4-community/learnue/modules/setting"
 "time"
 
 _ "github.com/go-sql-driver/mysql"

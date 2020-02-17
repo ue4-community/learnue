@@ -7,7 +7,7 @@
 package middleware
 
 import (
-	"github.com/studygolang/studygolang/model"
+	"github.com/ue4-community/learnue/model"
 	"net/http"
 
 	echo "github.com/labstack/echo/v4"

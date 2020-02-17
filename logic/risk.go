@@ -7,10 +7,10 @@
 package logic
 
 import (
-	. "github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/model"
+	. "github.com/ue4-community/learnue/db"
+	"github.com/ue4-community/learnue/model"
 
-	"github.com/studygolang/studygolang/modules/nosql"
+	"github.com/ue4-community/learnue/modules/nosql"
 )
 
 type RiskLogic struct{}

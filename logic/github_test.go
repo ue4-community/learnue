@@ -7,11 +7,11 @@
 package logic_test
 
 import (
-	"github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/logic"
+	"github.com/ue4-community/learnue/db"
+	"github.com/ue4-community/learnue/logic"
 	"testing"
 
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/logger"
 )
 
 func TestPullPR(t *testing.T) {

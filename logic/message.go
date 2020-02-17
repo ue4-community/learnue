@@ -7,17 +7,17 @@
 package logic
 
 import (
-	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/modules/util"
+	"github.com/ue4-community/learnue/model"
+	"github.com/ue4-community/learnue/modules/util"
 	"html/template"
 	"strconv"
 	"strings"
 
-	. "github.com/studygolang/studygolang/db"
+	. "github.com/ue4-community/learnue/db"
 
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/logger"
-	"github.com/studygolang/studygolang/modules/set"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/logger"
+	"github.com/ue4-community/learnue/modules/set"
 	"golang.org/x/net/context"
 	"xorm.io/xorm"
 )

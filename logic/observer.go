@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"unicode/utf8"
 
-	"github.com/studygolang/studygolang/model"
+	"github.com/ue4-community/learnue/model"
 )
 
 var (

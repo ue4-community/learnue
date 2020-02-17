@@ -16,7 +16,7 @@ FROM golang:1.13 AS build-env
 ENV GOPROXY=https://goproxy.cn  GO111MODULE=on  CGO_ENABLED=0 GOARCH=amd64 GOOS=linux
 WORKDIR /src
 ADD . .
-RUN go mod vendor && go build -o goapp -mod vendor github.com/studygolang/studygolang/goapp
+RUN go mod vendor && go build -o goapp -mod vendor github.com/ue4-community/learnue/goapp
 
 # 最终阶段
 FROM golang:1.13-alpine

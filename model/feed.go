@@ -7,10 +7,10 @@
 package model
 
 import (
-	"github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/db"
+	"github.com/ue4-community/learnue/modules/setting"
 
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/logger"
 )
 
 const FeedOffline = 1

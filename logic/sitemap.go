@@ -7,17 +7,17 @@
 package logic
 
 import (
-	"github.com/studygolang/studygolang/modules/setting"
-	"github.com/studygolang/studygolang/modules/util"
+	"github.com/ue4-community/learnue/modules/setting"
+	"github.com/ue4-community/learnue/modules/util"
 	"os"
 	"strconv"
 	"text/template"
 	"time"
 
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/logger"
 
-	. "github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/model"
+	. "github.com/ue4-community/learnue/db"
+	"github.com/ue4-community/learnue/model"
 )
 
 // 自定义模板函数

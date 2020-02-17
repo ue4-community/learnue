@@ -12,7 +12,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/studygolang/studygolang/db"
+	"github.com/ue4-community/learnue/db"
 )
 
 // 文档对象（供solr使用）

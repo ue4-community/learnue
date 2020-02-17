@@ -9,21 +9,21 @@ package controller
 import (
 	"bytes"
 	"fmt"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 	"html/template"
 	"net/http"
 	"net/url"
 	"runtime"
 	"strconv"
 
-	"github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/global"
-	"github.com/studygolang/studygolang/logic"
-	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/modules/context"
+	"github.com/ue4-community/learnue/db"
+	"github.com/ue4-community/learnue/global"
+	"github.com/ue4-community/learnue/logic"
+	"github.com/ue4-community/learnue/model"
+	"github.com/ue4-community/learnue/modules/context"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/ue4-community/learnue/modules/goutils"
 )
 
 type InstallController struct{}

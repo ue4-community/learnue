@@ -9,8 +9,8 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/modules/util"
+	"github.com/ue4-community/learnue/model"
+	"github.com/ue4-community/learnue/modules/util"
 
 	echo "github.com/labstack/echo/v4"
 )

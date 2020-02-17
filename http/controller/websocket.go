@@ -10,11 +10,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/studygolang/studygolang/logic"
+	"github.com/ue4-community/learnue/logic"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/logger"
 	"golang.org/x/net/websocket"
 )
 

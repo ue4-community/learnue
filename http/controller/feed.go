@@ -11,9 +11,9 @@ import (
 	"net/http"
 	"time"
 
-	. "github.com/studygolang/studygolang/http"
-	"github.com/studygolang/studygolang/logic"
-	"github.com/studygolang/studygolang/model"
+	. "github.com/ue4-community/learnue/http"
+	"github.com/ue4-community/learnue/logic"
+	"github.com/ue4-community/learnue/model"
 
 	"github.com/gorilla/feeds"
 	echo "github.com/labstack/echo/v4"

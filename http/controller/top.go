@@ -7,11 +7,11 @@
 package controller
 
 import (
-	"github.com/studygolang/studygolang/logic"
-	"github.com/studygolang/studygolang/modules/context"
+	"github.com/ue4-community/learnue/logic"
+	"github.com/ue4-community/learnue/modules/context"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/studygolang/studygolang/modules/times"
+	"github.com/ue4-community/learnue/modules/times"
 )
 
 type TopController struct{}

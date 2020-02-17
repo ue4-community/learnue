@@ -9,7 +9,7 @@ package logic
 
 import (
 	"errors"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 	"math/rand"
 	"net/http"
 	"regexp"
@@ -17,12 +17,12 @@ import (
 	"strings"
 	"time"
 
-	. "github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/model"
+	. "github.com/ue4-community/learnue/db"
+	"github.com/ue4-community/learnue/model"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/logger"
 )
 
 type RedditLogic struct {

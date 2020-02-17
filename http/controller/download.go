@@ -8,15 +8,15 @@ package controller
 
 import (
 	"fmt"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 	"net/http"
 	"regexp"
 	"strings"
 	"time"
 
-	"github.com/studygolang/studygolang/logic"
-	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/modules/context"
+	"github.com/ue4-community/learnue/logic"
+	"github.com/ue4-community/learnue/model"
+	"github.com/ue4-community/learnue/modules/context"
 
 	echo "github.com/labstack/echo/v4"
 )

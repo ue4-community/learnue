@@ -13,16 +13,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/studygolang/studygolang/db"
-	. "github.com/studygolang/studygolang/http"
-	"github.com/studygolang/studygolang/logic"
-	"github.com/studygolang/studygolang/model"
-	mycontext "github.com/studygolang/studygolang/modules/context"
-	"github.com/studygolang/studygolang/modules/util"
+	"github.com/ue4-community/learnue/db"
+	. "github.com/ue4-community/learnue/http"
+	"github.com/ue4-community/learnue/logic"
+	"github.com/ue4-community/learnue/model"
+	mycontext "github.com/ue4-community/learnue/modules/context"
+	"github.com/ue4-community/learnue/modules/util"
 
 	"github.com/gorilla/context"
 	echo "github.com/labstack/echo/v4"
-	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/ue4-community/learnue/modules/goutils"
 )
 
 // AutoLogin 用于 echo 框架的自动登录和通过 cookie 获取用户信息

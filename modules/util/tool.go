@@ -12,9 +12,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/studygolang/studygolang/global"
+	"github.com/ue4-community/learnue/global"
 
-	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/ue4-community/learnue/modules/goutils"
 )
 
 // 获取头像

@@ -8,17 +8,17 @@ package logic
 
 import (
 	"fmt"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 	"net/http"
 	"strconv"
 	"strings"
 	"sync"
 
-	. "github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/model"
+	. "github.com/ue4-community/learnue/db"
+	"github.com/ue4-community/learnue/model"
 
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/logger"
 )
 
 // 话题/文章/资源/图书等的浏览数

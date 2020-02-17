@@ -9,9 +9,9 @@ package logic
 import (
 	"errors"
 
-	. "github.com/studygolang/studygolang/db"
+	. "github.com/ue4-community/learnue/db"
 
-	"github.com/studygolang/studygolang/model"
+	"github.com/ue4-community/learnue/model"
 
 	"golang.org/x/net/context"
 )

@@ -7,13 +7,13 @@
 package controller
 
 import (
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 	"net/http"
 	"path"
 
 	"github.com/labstack/echo/v4"
 
-	"github.com/studygolang/studygolang/modules/util"
+	"github.com/ue4-community/learnue/modules/util"
 )
 
 // OtherController 有些页面只是前端，因此通过这个页面统一控制

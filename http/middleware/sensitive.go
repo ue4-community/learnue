@@ -7,17 +7,17 @@
 package middleware
 
 import (
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 	"net/http"
 	"strings"
 
-	"github.com/studygolang/studygolang/logic"
-	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/modules/context"
+	"github.com/ue4-community/learnue/logic"
+	"github.com/ue4-community/learnue/model"
+	"github.com/ue4-community/learnue/modules/context"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/logger"
 )
 
 var (

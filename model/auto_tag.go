@@ -9,7 +9,7 @@ package model
 import (
 	"strings"
 
-	"github.com/studygolang/studygolang/modules/keyword"
+	"github.com/ue4-community/learnue/modules/keyword"
 )
 
 // AutoTag 自动生成 tag

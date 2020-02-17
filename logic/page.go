@@ -9,7 +9,7 @@ package logic
 import (
 	"strings"
 
-	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/ue4-community/learnue/modules/goutils"
 )
 
 // 每页显示多少条

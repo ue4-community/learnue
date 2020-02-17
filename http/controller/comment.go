@@ -11,16 +11,16 @@ import (
 	"net/http"
 	"strconv"
 
-	. "github.com/studygolang/studygolang/http"
-	"github.com/studygolang/studygolang/http/middleware"
-	"github.com/studygolang/studygolang/logic"
-	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/modules/context"
+	. "github.com/ue4-community/learnue/http"
+	"github.com/ue4-community/learnue/http/middleware"
+	"github.com/ue4-community/learnue/logic"
+	"github.com/ue4-community/learnue/model"
+	"github.com/ue4-community/learnue/modules/context"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/slices"
-	"github.com/studygolang/studygolang/modules/echoutils"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/slices"
+	"github.com/ue4-community/learnue/modules/echoutils"
 )
 
 // 在需要喜欢且要回调的地方注册喜欢对象

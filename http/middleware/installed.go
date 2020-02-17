@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/studygolang/studygolang/db"
+	"github.com/ue4-community/learnue/db"
 
 	echo "github.com/labstack/echo/v4"
 )

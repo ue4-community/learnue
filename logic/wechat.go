@@ -10,13 +10,13 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
-	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/modules/setting"
-	"github.com/studygolang/studygolang/modules/util"
+	"github.com/ue4-community/learnue/model"
+	"github.com/ue4-community/learnue/modules/setting"
+	"github.com/ue4-community/learnue/modules/util"
 	"strings"
 	"time"
 
-	. "github.com/studygolang/studygolang/db"
+	. "github.com/ue4-community/learnue/db"
 
 	"github.com/tidwall/gjson"
 

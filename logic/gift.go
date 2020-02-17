@@ -12,8 +12,8 @@ import (
 	"fmt"
 	"time"
 
-	. "github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/model"
+	. "github.com/ue4-community/learnue/db"
+	"github.com/ue4-community/learnue/model"
 
 	"xorm.io/xorm"
 )

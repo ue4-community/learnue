@@ -11,13 +11,13 @@ import (
 	"fmt"
 	"time"
 
-	. "github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/model"
+	. "github.com/ue4-community/learnue/db"
+	"github.com/ue4-community/learnue/model"
 
 	"github.com/garyburd/redigo/redis"
-	"github.com/studygolang/studygolang/modules/logger"
-	"github.com/studygolang/studygolang/modules/nosql"
-	"github.com/studygolang/studygolang/modules/times"
+	"github.com/ue4-community/learnue/modules/logger"
+	"github.com/ue4-community/learnue/modules/nosql"
+	"github.com/ue4-community/learnue/modules/times"
 )
 
 type RankLogic struct{}

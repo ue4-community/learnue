@@ -2,13 +2,13 @@ package logic
 
 import (
 	"bytes"
-	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/model"
+	"github.com/ue4-community/learnue/modules/setting"
 	"io/ioutil"
 
 	"golang.org/x/net/context"
 
-	. "github.com/studygolang/studygolang/db"
+	. "github.com/ue4-community/learnue/db"
 )
 
 type InstallLogic struct{}

@@ -15,7 +15,7 @@ if not exist log mkdir log
 
 gofmt -w -s .
 
-go build -o bin/studygolang.exe github.com/studygolang/studygolang/cmd/studygolang
+go build -o bin/studygolang.exe github.com/ue4-community/learnue/cmd/studygolang
 
 :end
 echo finished

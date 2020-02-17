@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/logger"
 	"xorm.io/xorm"
 )
 

@@ -5,8 +5,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/logger"
 
 	"github.com/golang/groupcache/lru"
 )

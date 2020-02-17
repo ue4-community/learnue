@@ -7,7 +7,7 @@
 package admin
 
 import (
-	"github.com/studygolang/studygolang/logic"
+	"github.com/ue4-community/learnue/logic"
 
 	echo "github.com/labstack/echo/v4"
 )

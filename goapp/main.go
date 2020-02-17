@@ -7,7 +7,7 @@
 package main
 
 import (
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 	"io/ioutil"
 	"math/rand"
 	"os"
@@ -15,19 +15,19 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/studygolang/studygolang/global"
-	"github.com/studygolang/studygolang/http/controller"
-	"github.com/studygolang/studygolang/http/controller/admin"
-	"github.com/studygolang/studygolang/http/controller/app"
-	pwm "github.com/studygolang/studygolang/http/middleware"
-	"github.com/studygolang/studygolang/logic"
-	thirdmw "github.com/studygolang/studygolang/middleware"
+	"github.com/ue4-community/learnue/global"
+	"github.com/ue4-community/learnue/http/controller"
+	"github.com/ue4-community/learnue/http/controller/admin"
+	"github.com/ue4-community/learnue/http/controller/app"
+	pwm "github.com/ue4-community/learnue/http/middleware"
+	"github.com/ue4-community/learnue/logic"
+	thirdmw "github.com/ue4-community/learnue/middleware"
 
 	"github.com/fatih/structs"
 	"github.com/labstack/echo/v4"
 	mw "github.com/labstack/echo/v4/middleware"
-	"github.com/studygolang/studygolang/modules/keyword"
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/keyword"
+	"github.com/ue4-community/learnue/modules/logger"
 )
 
 func init() {

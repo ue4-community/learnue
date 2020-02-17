@@ -1,4 +1,4 @@
-module github.com/studygolang/studygolang
+module github.com/ue4-community/learnue
 
 go 1.12
 

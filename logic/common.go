@@ -9,18 +9,18 @@ package logic
 import (
 	"errors"
 	"fmt"
-	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/modules/util"
+	"github.com/ue4-community/learnue/model"
+	"github.com/ue4-community/learnue/modules/util"
 	"os"
 	"regexp"
 	"strconv"
 	"time"
 
 	"github.com/gorilla/schema"
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/logger"
-	"github.com/studygolang/studygolang/modules/nosql"
-	"github.com/studygolang/studygolang/modules/times"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/logger"
+	"github.com/ue4-community/learnue/modules/nosql"
+	"github.com/ue4-community/learnue/modules/times"
 	"golang.org/x/net/context"
 )
 

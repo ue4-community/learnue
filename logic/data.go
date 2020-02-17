@@ -10,10 +10,10 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/logger"
 
-	. "github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/model"
+	. "github.com/ue4-community/learnue/db"
+	"github.com/ue4-community/learnue/model"
 )
 
 // 常驻内存数据（多实例部署时，数据同步会有问题）

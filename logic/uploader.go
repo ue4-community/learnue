@@ -10,7 +10,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 	"image"
 	_ "image/gif"
 	_ "image/jpeg"
@@ -26,12 +26,12 @@ import (
 
 	"golang.org/x/net/context"
 
-	. "github.com/studygolang/studygolang/db"
-	"github.com/studygolang/studygolang/model"
+	. "github.com/ue4-community/learnue/db"
+	"github.com/ue4-community/learnue/model"
 
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/logger"
-	"github.com/studygolang/studygolang/modules/times"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/logger"
+	"github.com/ue4-community/learnue/modules/times"
 	"github.com/qiniu/api.v6/conf"
 	"github.com/qiniu/api.v6/io"
 	"github.com/qiniu/api.v6/rs"

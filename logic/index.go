@@ -7,11 +7,11 @@
 package logic
 
 import (
-	"github.com/studygolang/studygolang/model"
+	"github.com/ue4-community/learnue/model"
 	"strconv"
 	"strings"
 
-	"github.com/studygolang/studygolang/modules/times"
+	"github.com/ue4-community/learnue/modules/times"
 	"golang.org/x/net/context"
 )
 

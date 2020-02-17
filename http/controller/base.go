@@ -11,14 +11,14 @@ import (
 	"net/http"
 	"strings"
 
-	. "github.com/studygolang/studygolang/http"
-	"github.com/studygolang/studygolang/logic"
-	"github.com/studygolang/studygolang/modules/context"
+	. "github.com/ue4-community/learnue/http"
+	"github.com/ue4-community/learnue/logic"
+	"github.com/ue4-community/learnue/modules/context"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/logger"
-	"github.com/studygolang/studygolang/modules/nosql"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/logger"
+	"github.com/ue4-community/learnue/modules/nosql"
 )
 
 func getLogger(ctx echo.Context) *logger.Logger {

@@ -8,7 +8,7 @@ package main
 
 import (
 	echo "github.com/labstack/echo/v4"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 )
 
 type staticRootConf struct {

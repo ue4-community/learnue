@@ -13,12 +13,12 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/studygolang/studygolang/global"
-	. "github.com/studygolang/studygolang/http"
-	"github.com/studygolang/studygolang/logic"
+	"github.com/ue4-community/learnue/global"
+	. "github.com/ue4-community/learnue/http"
+	"github.com/ue4-community/learnue/logic"
 
 	echo "github.com/labstack/echo/v4"
-	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/ue4-community/learnue/modules/goutils"
 )
 
 var (

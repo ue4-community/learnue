@@ -12,7 +12,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/studygolang/studygolang/modules/goutils"
+	"github.com/ue4-community/learnue/modules/goutils"
 	"xorm.io/xorm"
 )
 

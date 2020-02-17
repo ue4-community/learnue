@@ -8,12 +8,12 @@ import (
 	"reflect"
 	"time"
 
-	mycontext "github.com/studygolang/studygolang/modules/context"
+	mycontext "github.com/ue4-community/learnue/modules/context"
 
 	"github.com/labstack/echo/v4"
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/logger"
-	"github.com/studygolang/studygolang/modules/nosql"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/logger"
+	"github.com/ue4-community/learnue/modules/nosql"
 )
 
 const logKey = "logger"

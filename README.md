@@ -21,17 +21,31 @@
     5.*去掉无用或者不相关的，以及代码写死的模块
    
 长期目标
+
     1.*路由库由echo改为gin(待定),gin是go社区最火的一个配置库。
     2.*ui重构,目前界面ui采用传统mvc方式开发,考虑前端引入vue之类的前端库/或者前端完全工程化，实现前后端分离.
 
 ## 参与开发LearnUE
 
-要求 Go 1.12+
+### 环境搭建
+LearnUE采用go语言开发。需要你提前安装以下工具。
+
+    1.go语言 1.12+
+    
+    2.mkcert,本地证书签发工具,目的是生成本地https证书,确保开发环境和生产环境尽可能接近，并给下边的caddy使用。
+    
+    3.caddy,作为反向代理工具,同时也是部署时用到的web服务器，配合mkcert生成的本地证书，让开发环境尽可能和部署环境一致（参考：learnue/caddy）
+    
+    4.docker,容器工具,开发中用到的redis,mysql等服务通过配置docker-compose来搭建环境,无需手动下载安装，学会了百利无一害。
+
+部署环境单独分离出一个仓库,感兴趣的可以参考[Lernue_Deploy](https://github.com/ue4-community/learnue_deploy)
+
+### 安装编译
 
 1、下载源码到本地某个非gopath目录
 
 ```shell
-git clone https://github.com/luochuanyuewu/learnue.git
+git clone https://github.com/ue4-community/learnue.git
 ```
 
 2、编译
@@ -41,23 +55,23 @@ git clone https://github.com/luochuanyuewu/learnue.git
 ```shell
 // unix/linux系统
 export GOPROXY=https://goproxy.cn
-go build -o bin/studygolang github.com/studygolang/studygolang/cmd/studygolang
+go mod vendor && go build -o goapp -mod vendor github.com/ue4-community/learnue/goapp
 // windows
 set GOPROXY=https://goproxy.cn
-go build -o bin/studygolang github.com/studygolang/studygolang/cmd/studygolang
+go mod vendor && go build -o goapp -mod vendor github.com/ue4-community/learnue/goapp
 ```
 
 这样便编译好了 learnue
 
-3、在 learnue 源码中的 bin 目录下应该有了 studygolang 可执行文件。
+3、在 learnue 源码中的 goapp 目录下应该有了 goapp 可执行文件。
 
-接下来启动 studygolang。
+接下来启动 learnue。
 
 ```shell
 // unix
-bin/studygolang
+goapp/goapp
 // windows
-bin\studygolang.exe
+goapp\goapp.exe
 ```
 
 一切顺利的话，网站应该就启动了。

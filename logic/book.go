@@ -8,7 +8,7 @@ package logic
 
 import (
 	"encoding/json"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/setting"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -17,11 +17,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/studygolang/studygolang/modules/nosql"
+	"github.com/ue4-community/learnue/modules/nosql"
 
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/logger"
-	"github.com/studygolang/studygolang/modules/times"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/logger"
+	"github.com/ue4-community/learnue/modules/times"
 )
 
 const (

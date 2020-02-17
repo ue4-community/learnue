@@ -9,25 +9,25 @@ package logic
 import (
 	"errors"
 	"fmt"
-	"github.com/studygolang/studygolang/model"
-	"github.com/studygolang/studygolang/modules/setting"
-	"github.com/studygolang/studygolang/modules/util"
+	"github.com/ue4-community/learnue/model"
+	"github.com/ue4-community/learnue/modules/setting"
+	"github.com/ue4-community/learnue/modules/util"
 	"math/rand"
 	"net/url"
 	"strings"
 	"time"
 
-	"github.com/studygolang/studygolang/modules/times"
+	"github.com/ue4-community/learnue/modules/times"
 
-	"github.com/studygolang/studygolang/modules/slices"
+	"github.com/ue4-community/learnue/modules/slices"
 
 	"github.com/go-validator/validator"
-	"github.com/studygolang/studygolang/modules/goutils"
-	"github.com/studygolang/studygolang/modules/logger"
+	"github.com/ue4-community/learnue/modules/goutils"
+	"github.com/ue4-community/learnue/modules/logger"
 	"golang.org/x/net/context"
 	"xorm.io/xorm"
 
-	. "github.com/studygolang/studygolang/db"
+	. "github.com/ue4-community/learnue/db"
 )
 
 type UserLogic struct{}

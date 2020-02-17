@@ -7,9 +7,9 @@
 package main
 
 import (
-	"github.com/studygolang/studygolang/modules/keyword"
-	"github.com/studygolang/studygolang/modules/logger"
-	"github.com/studygolang/studygolang/modules/setting"
+	"github.com/ue4-community/learnue/modules/keyword"
+	"github.com/ue4-community/learnue/modules/logger"
+	"github.com/ue4-community/learnue/modules/setting"
 )
 
 func Crawler() {

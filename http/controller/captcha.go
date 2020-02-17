@@ -7,7 +7,7 @@
 package controller
 
 import (
-	. "github.com/studygolang/studygolang/http"
+	. "github.com/ue4-community/learnue/http"
 
 	"github.com/dchest/captcha"
 	echo "github.com/labstack/echo/v4"

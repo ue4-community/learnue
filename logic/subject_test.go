@@ -7,8 +7,8 @@
 package logic_test
 
 import (
-	"github.com/studygolang/studygolang/logic"
-	"github.com/studygolang/studygolang/model"
+	"github.com/ue4-community/learnue/logic"
+	"github.com/ue4-community/learnue/model"
 	"reflect"
 	"testing"
 
