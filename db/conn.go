@@ -7,16 +7,16 @@
 package db
 
 import (
-	"database/sql"
-	"errors"
-	"fmt"
-	"github.com/spf13/viper"
-	"github.com/studygolang/studygolang/modules/setting"
-	"time"
+"database/sql"
+"errors"
+"fmt"
+"github.com/spf13/viper"
+"github.com/studygolang/studygolang/modules/setting"
+"time"
 
-	_ "github.com/go-sql-driver/mysql"
-	"xorm.io/core"
-	"xorm.io/xorm"
+_ "github.com/go-sql-driver/mysql"
+"xorm.io/core"
+"xorm.io/xorm"
 )
 
 var MasterDB *xorm.Engine
