@@ -334,12 +334,16 @@ func (TopicController) Append(ctx echo.Context) error {
 func (TopicController) Nodes(ctx echo.Context) error {
 	data := make(map[string]interface{})
 
+	hadRecommend := false
+
 	if len(logic.AllRecommendNodes) > 0 {
+		hadRecommend = true
 		data["nodes"] = logic.DefaultNode.FindAll(context.EchoContext(ctx))
 	} else {
 		data["nodes"] = logic.GenNodes()
 	}
 
+	data["had_recommend"] = hadRecommend
 	if echoutils.IsV2(ctx) {
 		return ctx.JSON(http.StatusOK, data)
 	} else {

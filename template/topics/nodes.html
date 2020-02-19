@@ -14,8 +14,18 @@
 		<div class="sep20"></div>
 		<div class="box_white cell">
 			<div class="inner">
-				{{range .nodes}}
-				<a href="/go/{{.Ename}}" class="item_node">{{.name}}</a>
+				{{if .had_recommend}}}
+					{{range .nodes}}
+					<a href="/go/{{.ename}}" class="item_node">{{.name}}</a>
+					{{end}}
+				{{else}}
+					{{range .nodes}}
+						{{range $k,$v :=  .}}
+							{{range $v}}
+								<a href="/go/{{.ename}}" class="item_node">{{.name}}</a>
+							{{end}}
+						{{end}}
+					{{end}}
 				{{end}}
 			</div>
 		</div>
