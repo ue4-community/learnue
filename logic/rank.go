@@ -177,13 +177,15 @@ func (self RankLogic) FindDAURank(ctx context.Context, num int, ymds ...string) 
 	if len(uids) == 0 {
 		return nil
 	}
-
 	userMap := DefaultUser.FindDAUUsers(ctx, uids)
 	users := make([]*model.User, len(userMap))
 	for i, uid := range uids {
-		user := userMap[uid]
-		user.Weight = weights[i]
-		users[i] = user
+		if val,ok := userMap[uid];ok { // 多一层检测，确保缓存中的用户还存在,但用户却在数据库被删了时不报错
+			user := val
+			user.Weight = weights[i]
+			users[i] = user
+		}
+
 	}
 
 	return users

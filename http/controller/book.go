@@ -7,17 +7,17 @@
 package controller
 
 import (
-	"html/template"
-	"net/http"
+"html/template"
+"net/http"
 
-	echo "github.com/labstack/echo/v4"
-	"github.com/ue4-community/learnue/modules/goutils"
+echo "github.com/labstack/echo/v4"
+"github.com/ue4-community/learnue/modules/goutils"
 
-	. "github.com/ue4-community/learnue/http"
-	"github.com/ue4-community/learnue/http/middleware"
-	"github.com/ue4-community/learnue/logic"
-	"github.com/ue4-community/learnue/model"
-	"github.com/ue4-community/learnue/modules/context"
+. "github.com/ue4-community/learnue/http"
+"github.com/ue4-community/learnue/http/middleware"
+"github.com/ue4-community/learnue/logic"
+"github.com/ue4-community/learnue/model"
+"github.com/ue4-community/learnue/modules/context"
 )
 
 // 在需要评论（喜欢）且要回调的地方注册评论（喜欢）对象
@@ -49,7 +49,6 @@ func (BookController) ReadList(ctx echo.Context) error {
 
 	data := map[string]interface{}{
 		"books":       books,
-		"activeBooks": "active",
 		"page":        template.HTML(pageHtml),
 	}
 
@@ -62,7 +61,7 @@ func (BookController) Create(ctx echo.Context) error {
 	// 请求新建图书页面
 	if name == "" || ctx.Request().Method != "POST" {
 		book := &model.Book{}
-		return render(ctx, "books/new.html", map[string]interface{}{"book": book, "activeBooks": "active"})
+		return render(ctx, "books/new.html", map[string]interface{}{"book": book})
 	}
 
 	user := ctx.Get("user").(*model.Me)
@@ -86,7 +85,6 @@ func (BookController) Detail(ctx echo.Context) error {
 	}
 
 	data := map[string]interface{}{
-		"activeBooks": "active",
 		"book":        book,
 	}
 

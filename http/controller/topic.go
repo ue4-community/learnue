@@ -11,6 +11,8 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/ue4-community/learnue/modules/echoutils"
+
 	. "github.com/ue4-community/learnue/http"
 	"github.com/ue4-community/learnue/http/middleware"
 	"github.com/ue4-community/learnue/logic"
@@ -118,7 +120,7 @@ func (TopicController) NodeTopics(ctx echo.Context) error {
 	// 当前节点信息
 	node := logic.GetNode(nid)
 
-	return render(ctx, "topics/node.html", map[string]interface{}{"activeTopics": "active", "topics": topics, "page": template.HTML(pageHtml), "total": total, "node": node})
+	return render(ctx, "topics/node.html", map[string]interface{}{ "topics": topics, "page": template.HTML(pageHtml), "total": total, "node": node})
 }
 
 // GoNodeTopics 某节点下的主题列表，uri: /go/golang
@@ -137,7 +139,7 @@ func (TopicController) GoNodeTopics(ctx echo.Context) error {
 	total := logic.DefaultTopic.Count(context.EchoContext(ctx), querystring, nid)
 	pageHtml := paginator.SetTotal(total).GetPageHtml(ctx.Request().URL.Path)
 
-	return render(ctx, "topics/node.html", map[string]interface{}{"activeTopics": "active", "topics": topics, "page": template.HTML(pageHtml), "total": total, "node": node})
+	return render(ctx, "topics/node.html", map[string]interface{}{ "topics": topics, "page": template.HTML(pageHtml), "total": total, "node": node})
 }
 
 // Detail 社区主题详细页
@@ -338,7 +340,12 @@ func (TopicController) Nodes(ctx echo.Context) error {
 		data["nodes"] = logic.GenNodes()
 	}
 
-	return render(ctx, "topics/nodes.html", data)
+	if echoutils.IsV2(ctx) {
+		return ctx.JSON(http.StatusOK, data)
+	} else {
+		return render(ctx, "topics/nodes.html", data)
+	}
+
 }
 
 func (TopicController) SetTop(ctx echo.Context) error {

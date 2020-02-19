@@ -35,7 +35,7 @@ func (ReadingController) ReadingList(ctx echo.Context) error {
 	num := len(readings)
 	if num == 0 {
 		if lastId == 0 {
-			return render(ctx, "readings/list.html", map[string]interface{}{"activeReadings": "active", "readings": readings, "rtype": rtype})
+			return render(ctx, "readings/list.html", map[string]interface{}{"readings": readings, "rtype": rtype})
 		} else {
 			return ctx.Redirect(http.StatusSeeOther, "/readings")
 		}
@@ -72,7 +72,7 @@ func (ReadingController) ReadingList(ctx echo.Context) error {
 		"has_next": hasNext,
 		"next_id":  nextId,
 	}
-	return render(ctx, "readings/list.html", map[string]interface{}{"activeReadings": "active", "readings": readings, "page": pageInfo, "rtype": rtype})
+	return render(ctx, "readings/list.html", map[string]interface{}{"readings": readings, "page": pageInfo, "rtype": rtype})
 }
 
 // IReading 点击 【我要晨读】，记录点击数，跳转

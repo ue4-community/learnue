@@ -117,3 +117,10 @@ func AsyncResponse(ctx echo.Context, logicInstance interface{}, methodName strin
 
 	return Success(ctx, nil)
 }
+
+// 用于重构
+func IsV2(ctx echo.Context) bool  {
+	v2 := ctx.Request().Header.Get("v2")
+
+	return v2 != ""
+}

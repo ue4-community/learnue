@@ -55,7 +55,7 @@ func (ProjectController) ReadList(ctx echo.Context) error {
 
 	num := len(projects)
 	if num == 0 {
-		return render(ctx, "projects/list.html", map[string]interface{}{"projects": projects, "activeProjects": "active"})
+		return render(ctx, "projects/list.html", map[string]interface{}{"projects": projects})
 	}
 
 	// 获取当前用户喜欢对象信息
@@ -65,7 +65,7 @@ func (ProjectController) ReadList(ctx echo.Context) error {
 		likeFlags, _ = logic.DefaultLike.FindUserLikeObjects(context.EchoContext(ctx), me.Uid, model.TypeProject, projects[0].Id, projects[num-1].Id)
 	}
 
-	return render(ctx, "projects/list.html", map[string]interface{}{"projects": projects, "activeProjects": "active", "page": pageInfo, "likeflags": likeFlags})
+	return render(ctx, "projects/list.html", map[string]interface{}{"projects": projects, "page": pageInfo, "likeflags": likeFlags})
 }
 
 // Create 新建项目
@@ -77,7 +77,7 @@ func (ProjectController) Create(ctx echo.Context) error {
 	if name == "" || ctx.Request().Method != "POST" {
 		project := &model.OpenProject{}
 
-		data := map[string]interface{}{"project": project, "activeProjects": "active"}
+		data := map[string]interface{}{"project": project,}
 		if logic.NeedCaptcha(me) {
 			data["captchaId"] = captcha.NewLen(util.CaptchaLen)
 		}
@@ -103,7 +103,7 @@ func (ProjectController) Modify(ctx echo.Context) error {
 	// 请求编辑项目页面
 	if ctx.Request().Method != "POST" {
 		project := logic.DefaultProject.FindOne(context.EchoContext(ctx), id)
-		return render(ctx, "projects/new.html", map[string]interface{}{"project": project, "activeProjects": "active"})
+		return render(ctx, "projects/new.html", map[string]interface{}{"project": project})
 	}
 
 	user := ctx.Get("user").(*model.Me)
@@ -126,7 +126,6 @@ func (ProjectController) Detail(ctx echo.Context) error {
 	}
 
 	data := map[string]interface{}{
-		"activeProjects": "active",
 		"project":        project,
 	}
 

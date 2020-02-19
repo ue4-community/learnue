@@ -67,7 +67,7 @@ func (ArticleController) ReadList(ctx echo.Context) error {
 
 	num := len(articles)
 	if num == 0 {
-		return render(ctx, "articles/list.html", map[string]interface{}{"articles": articles, "activeArticles": "active"})
+		return render(ctx, "articles/list.html", map[string]interface{}{"articles": articles})
 	}
 
 	// 获取当前用户喜欢对象信息
@@ -94,7 +94,7 @@ func (ArticleController) ReadList(ctx echo.Context) error {
 		}
 	}
 
-	return render(ctx, "articles/list.html", map[string]interface{}{"articles": articles, "activeArticles": "active", "page": pageInfo, "likeflags": likeFlags})
+	return render(ctx, "articles/list.html", map[string]interface{}{"articles": articles, "page": pageInfo, "likeflags": likeFlags})
 }
 
 // Detail 文章详细页

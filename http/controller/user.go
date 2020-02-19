@@ -178,7 +178,6 @@ func (UserController) Resources(ctx echo.Context) error {
 
 	return render(ctx, "user/resources.html", map[string]interface{}{
 		"user":            user,
-		"activeResources": "active",
 		"resources":       resources,
 		"page":            template.HTML(pageHtml),
 		"total":           total,
@@ -202,7 +201,6 @@ func (UserController) Projects(ctx echo.Context) error {
 
 	return render(ctx, "user/projects.html", map[string]interface{}{
 		"user":           user,
-		"activeProjects": "active",
 		"projects":       projects,
 		"page":           template.HTML(pageHtml),
 		"total":          total,
