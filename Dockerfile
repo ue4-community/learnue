@@ -29,4 +29,4 @@ COPY ./static ./static
 COPY ./data ./data
 RUN ls -la
 EXPOSE 8088
-CMD ./goapp
+CMD ./goapp -embed_indexing

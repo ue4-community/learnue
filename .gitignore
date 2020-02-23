@@ -54,3 +54,4 @@ mysql_data/
 vendor/
 .env
 config/env.yml
+/solr_data/

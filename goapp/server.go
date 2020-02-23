@@ -25,9 +25,7 @@ var (
 )
 
 func IndexingServer() {
-	if !flag.Parsed() {
-		flag.Parse()
-	}
+
 
 	if *manualIndex {
 		indexing(true)
@@ -36,8 +34,8 @@ func IndexingServer() {
 	c := cron.New()
 	// 构建 solr 需要的索引数据
 	// 1 分钟一次增量
-	c.AddFunc("@every 1m", func() {
-		indexing(false)
+	c.AddFunc("@every 5s", func() {
+		indexing(true)
 	})
 	// 一周一次全量（周六晚上2点开始）
 	c.AddFunc("0 0 2 * * 6", func() {

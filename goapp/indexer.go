@@ -7,12 +7,16 @@
 package main
 
 import (
+	"flag"
 	"github.com/ue4-community/learnue/modules/keyword"
 	"github.com/ue4-community/learnue/modules/logger"
 	"github.com/ue4-community/learnue/modules/setting"
 )
 
 func Indexer() {
+	if !flag.Parsed() {
+		flag.Parse()
+	}
 	logger.Init(setting.ROOT+"/log", setting.Get().GetString("global.log_level"))
 	go keyword.Extractor.Init(keyword.DefaultProps, true, setting.ROOT+"/data/programming.txt,"+setting.ROOT+"/data/dictionary.txt")
 

@@ -11,8 +11,8 @@ import (
 	"github.com/ue4-community/learnue/modules/setting"
 	"time"
 
-	"github.com/ue4-community/learnue/modules/logger"
 	"github.com/robfig/cron"
+	"github.com/ue4-community/learnue/modules/logger"
 
 	"github.com/ue4-community/learnue/db"
 	"github.com/ue4-community/learnue/global"
@@ -28,7 +28,9 @@ var (
 
 // 后台运行的任务
 func ServeBackGround() {
-
+	if !flag.Parsed() {
+		flag.Parse()
+	}
 	if db.MasterDB == nil {
 		return
 	}

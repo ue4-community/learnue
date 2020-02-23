@@ -316,7 +316,7 @@ func (this *SearcherLogic) DoSearch(q, field string, start, rows int) (*model.Re
 		"hl.fl":          []string{"title,content"},
 		"hl.simple.pre":  []string{"<em>"},
 		"hl.simple.post": []string{"</em>"},
-		"hl.fragsize":    []string{strconv.Itoa(searchContentLen)},
+		//"hl.fragsize":    []string{strconv.Itoa(searchContentLen)},
 		"start":          []string{strconv.Itoa(start)},
 		"rows":           []string{strconv.Itoa(rows)},
 	}

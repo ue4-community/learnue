@@ -36,13 +36,13 @@ services:
     ports:
       - "6380:6379"
     command: redis-server
-#  es:
-#    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
-#    container_name: learnue_es
-#    environment:
-#      - discovery.type=single-node
-#    volumes:
-#      - ./data/es:/usr/share/elasticsearch/data
-#    ports:
-#      - 9200:9200
-
+  solr:
+    image: solr:8
+    container_name: learnue_solr
+    ports:
+      - "8983:8983"
+    volumes:
+      - ./solr_data:/var/solr/data
+    command:
+      - solr-precreate
+      - learnue
