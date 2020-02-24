@@ -135,7 +135,7 @@ func (self UserLogic) Update(ctx context.Context, me *model.Me, form url.Values)
 	defer session.Close()
 	session.Begin()
 
-	_, err = session.Id(me.Uid).Cols(cols).Update(user)
+	_, err = session.ID(me.Uid).Cols(cols).Update(user)
 	if err != nil {
 		session.Rollback()
 
@@ -153,7 +153,7 @@ func (self UserLogic) Update(ctx context.Context, me *model.Me, form url.Values)
 		Where("uid=?", me.Uid).Update(map[string]interface{}{"email": me.Email})
 	if err != nil {
 		session.Rollback()
-		objLog.Errorf("更新用户 【%d】 信息失败：%s", me.Uid, err)
+		objLog.Errorf("更新用户(UserLogin) 【%d】 信息失败：%s", me.Uid, err)
 		errMsg = "对不起，服务器内部错误，请稍后再试！"
 		return
 	}
